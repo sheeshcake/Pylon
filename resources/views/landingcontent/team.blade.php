@@ -4,7 +4,7 @@
 
         <header class="section-header">
         <h2>Team</h2>
-        <p>Our hard working team</p>
+        <p>Meet our awesome team</p>
         </header>
 
         <div class="row gy-4">
@@ -21,9 +21,8 @@
                 </div>
             </div>
             <div class="member-info">
-                <h4>Walter White</h4>
+                <h4>Othelo Adiong</h4>
                 <span>Chief Executive Officer</span>
-                <p>Velit aut quia fugit et et. Dolorum ea voluptate vel tempore tenetur ipsa quae aut. Ipsum exercitationem iure minima enim corporis et voluptate.</p>
             </div>
             </div>
         </div>
@@ -40,9 +39,8 @@
                 </div>
             </div>
             <div class="member-info">
-                <h4>Sarah Jhonson</h4>
-                <span>Product Manager</span>
-                <p>Quo esse repellendus quia id. Est eum et accusantium pariatur fugit nihil minima suscipit corporis. Voluptate sed quas reiciendis animi neque sapiente.</p>
+                <h4>Stephanie Adiong</h4>
+                <span>Chief Financial Officer</span>
             </div>
             </div>
         </div>
@@ -59,9 +57,8 @@
                 </div>
             </div>
             <div class="member-info">
-                <h4>William Anderson</h4>
-                <span>CTO</span>
-                <p>Vero omnis enim consequatur. Voluptas consectetur unde qui molestiae deserunt. Voluptates enim aut architecto porro aspernatur molestiae modi.</p>
+                <h4>Ryan Guerra</h4>
+                <span>Human Capital Manager</span>
             </div>
             </div>
         </div>
@@ -78,15 +75,21 @@
                 </div>
             </div>
             <div class="member-info">
-                <h4>Amanda Jepson</h4>
-                <span>Accountant</span>
-                <p>Rerum voluptate non adipisci animi distinctio et deserunt amet voluptas. Quia aut aliquid doloremque ut possimus ipsum officia.</p>
+                <h4>Jho Ann Perez</h4>
+                <span>Human Capital Secretary</span>
             </div>
             </div>
         </div>
 
         </div>
+        <div class="mt-5">
+            <center>
+                <button class="btn btn-primary d-inline-flex align-items-center justify-content-center align-self-center">
+                    Tell Me More<i class="bi bi-arrow-right"></i>
+                </button>
+            </center>
+        </div>
+
 
     </div>
-
 </section><!-- End Team Section -->

@@ -42,27 +42,17 @@
                 <ul>
                 <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
                 <li><a class="nav-link scrollto" href="#about">About</a></li>
-                <li><a class="nav-link scrollto" href="#services">Services</a></li>
+                <li class="dropdown"><a href="#"><span>Services</span> <i class="bi bi-chevron-down"></i></a>
+                    <ul>
+                        <li><a href="#">Social Media Marketing</a></li>
+                        <li><a href="#">Branding Strategy</a></li>
+                        <li><a href="#">Website Development</a></li>
+                        <li><a href="#">Contact Center</a></li>
+                    </ul>
+                </li>
                 <li><a class="nav-link scrollto" href="#portfolio">Portfolio</a></li>
                 <li><a class="nav-link scrollto" href="#team">Team</a></li>
                 <li><a href="blog.html">Blog</a></li>
-                <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
-                    <ul>
-                    <li><a href="#">Drop Down 1</a></li>
-                    <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
-                        <ul>
-                        <li><a href="#">Deep Drop Down 1</a></li>
-                        <li><a href="#">Deep Drop Down 2</a></li>
-                        <li><a href="#">Deep Drop Down 3</a></li>
-                        <li><a href="#">Deep Drop Down 4</a></li>
-                        <li><a href="#">Deep Drop Down 5</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">Drop Down 2</a></li>
-                    <li><a href="#">Drop Down 3</a></li>
-                    <li><a href="#">Drop Down 4</a></li>
-                    </ul>
-                </li>
                 <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
                 <li><a class="getstarted scrollto" href="#about">Get Started</a></li>
                 </ul>
@@ -78,8 +68,8 @@
             <div class="container">
             <div class="row">
                 <div class="col-lg-6 d-flex flex-column justify-content-center">
-                <h1 data-aos="fade-up">We offer modern solutions for growing your business</h1>
-                <h2 data-aos="fade-up" data-aos-delay="400">We are team of talented designers making websites with Bootstrap</h2>
+                <h1 data-aos="fade-up">Business Simplified</h1>
+                <h2 data-aos="fade-up" data-aos-delay="400">Simplifying business is all about utilizing the creative resources out there in the technology-advanced world, it implies that streamlining your business with digital advancement can make life a less of a headache for you and your business</h2>
                 <div data-aos="fade-up" data-aos-delay="600">
                     <div class="text-center text-lg-start">
                     <a href="#about" class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center">
@@ -101,23 +91,24 @@
             <!-- ======= About Section ======= -->
             @include('landingcontent.about')
 
+            <!-- ======= Features Section ======= -->
+            @include('landingcontent.feature')
+
             <!-- ======= Values Section ======= -->
-            @include('landingcontent.clients')
+            @include('landingcontent.values')
 
             <!-- ======= Counts Section ======= -->
             @include('landingcontent.counts')
-
-            <!-- ======= Features Section ======= -->
-            @include('landingcontent.feature')
+            
             
             <!-- ======= Services Section ======= -->
-            @include('landingcontent.services')
+            
 
             <!-- ======= Pricing Section ======= -->
-            @include('landingcontent.pricing')
+            
 
             <!-- ======= F.A.Q Section ======= -->
-            @include('landingcontent.faq')
+            
 
             <!-- ======= Portfolio Section ======= -->
             @include('landingcontent.portfolio')
@@ -127,9 +118,6 @@
 
             <!-- ======= Team Section ======= -->
             @include('landingcontent.team')
-
-            <!-- ======= Clients Section ======= -->
-            @include('landingcontent.clients')
 
             <!-- ======= Recent Blog Posts Section ======= -->
             @include('landingcontent.recentblog')

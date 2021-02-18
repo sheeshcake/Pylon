@@ -4,7 +4,7 @@
 
         <header class="section-header">
         <h2>Our Clients</h2>
-        <p>Temporibus omnis officia</p>
+        <p>Our Satisfied Clients</p>
         </header>
 
         <div class="clients-slider swiper-container">

@@ -4,7 +4,7 @@
 
         <header class="section-header">
         <h2>Testimonials</h2>
-        <p>What they are saying about us</p>
+        <p>What out clients have to say</p>
         </header>
 
         <div class="testimonials-slider swiper-container" data-aos="fade-up" data-aos-delay="200">
@@ -16,12 +16,11 @@
                 <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
                 </div>
                 <p>
-                Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
+                    “I am with Pylon for a few months now and I must say that they overdeliver and I love it so much. They rescue like 911 even in the middle of wee/odd hours! It's such a huge relief having them as a team. It saves me time and effort running my socials. Thankful and grateful to you guys! More power.”
                 </p>
                 <div class="profile mt-auto">
-                <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
-                <h3>Saul Goodman</h3>
-                <h4>Ceo &amp; Founder</h4>
+                <h3>Ms. Lebii</h3>
+                <h4>PrettyDose Davao</h4>
                 </div>
             </div>
             </div><!-- End testimonial item -->
@@ -32,12 +31,10 @@
                 <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
                 </div>
                 <p>
-                Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
+                    “Akong business dili gyud mailhan sa mga tawo (My business will not be known to people) if not for Pylon’s effective social media marketing strategy. It’s thanks to them that many people are now aware that Tireshoppe exists. Now I have more customers!”
                 </p>
                 <div class="profile mt-auto">
-                <img src="assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
-                <h3>Sara Wilsson</h3>
-                <h4>Designer</h4>
+                <h3>Tireshoppe Iligan</h3>
                 </div>
             </div>
             </div><!-- End testimonial item -->
@@ -48,12 +45,10 @@
                 <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
                 </div>
                 <p>
-                Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.
+                “From logo creation to social media management, Pylon never failed me. Thank you for building my beauty brand with me. I’d definitely recommend Pylon to my friends who are starting their business. Choose the right partner like how I chose mine.”
                 </p>
                 <div class="profile mt-auto">
-                <img src="assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
-                <h3>Jena Karlis</h3>
-                <h4>Store Owner</h4>
+                <h3>AGELESSBEAUTE BY BEAUTÉDERM</h3>
                 </div>
             </div>
             </div><!-- End testimonial item -->
@@ -64,12 +59,10 @@
                 <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
                 </div>
                 <p>
-                Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.
+                    “With the number of competitions in the market, I never thought my business would stand a chance. But Pylon made it possible for Chin Glass to break into the barriers with social media marketing. Thank you Pylon! More power to you!”
                 </p>
                 <div class="profile mt-auto">
-                <img src="assets/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
-                <h3>Matt Brandon</h3>
-                <h4>Freelancer</h4>
+                <h3>Chinn Glass & Aluminum Supply</h3>
                 </div>
             </div>
             </div><!-- End testimonial item -->
@@ -80,12 +73,10 @@
                 <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
                 </div>
                 <p>
-                Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.
+                “I never knew that my business could reach more customers until Pylon made me realize this. They know exactly what they are doing. I thank them for helping me with my business.”
                 </p>
                 <div class="profile mt-auto">
-                <img src="assets/img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
-                <h3>John Larson</h3>
-                <h4>Entrepreneur</h4>
+                <h3>Mother Nurture Iligan</h3>
                 </div>
             </div>
             </div><!-- End testimonial item -->

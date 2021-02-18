@@ -5,10 +5,10 @@
 
         <div class="col-lg-6 d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="200">
             <div class="content">
-            <h3>Who We Are</h3>
-            <h2>Expedita voluptas omnis cupiditate totam eveniet nobis sint iste. Dolores est repellat corrupti reprehenderit.</h2>
+            <h3>Why Pylon?</h3>
+            <h2>A lot of digital marketing agencies are rapidly arising at this technologically enhanced generation, but only few genuinely dive into the real needs of the clients.</h2>
             <p>
-                Quisquam vel ut sint cum eos hic dolores aperiam. Sed deserunt et. Inventore et et dolor consequatur itaque ut voluptate sed et. Magnam nam ipsum tenetur suscipit voluptatum nam et est corrupti.
+            As a pillar of support for companies, organizations, and individuals in business, we genuinely care about the work we do and to us, our clients are not just clients. With our skills and expertise, we help them grow and we help each other develop our full potentials together.
             </p>
             <div class="text-center text-lg-start">
                 <a href="#" class="btn-read-more d-inline-flex align-items-center justify-content-center align-self-center">
