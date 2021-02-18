@@ -46,11 +46,10 @@
         <div class="col-lg-2 col-6 footer-links">
             <h4>Our Services</h4>
             <ul>
-            <li><i class="bi bi-chevron-right"></i> <a href="#">Web Design</a></li>
-            <li><i class="bi bi-chevron-right"></i> <a href="#">Web Development</a></li>
-            <li><i class="bi bi-chevron-right"></i> <a href="#">Product Management</a></li>
-            <li><i class="bi bi-chevron-right"></i> <a href="#">Marketing</a></li>
-            <li><i class="bi bi-chevron-right"></i> <a href="#">Graphic Design</a></li>
+            <li><i class="bi bi-chevron-right"></i> <a href="#">Social Media Marketing</a></li>
+            <li><i class="bi bi-chevron-right"></i> <a href="#">Branding Strategy</a></li>
+            <li><i class="bi bi-chevron-right"></i> <a href="#">Website Development</a></li>
+            <li><i class="bi bi-chevron-right"></i> <a href="#">Contact Center</a></li>
             </ul>
         </div>
 

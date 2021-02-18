@@ -109,9 +109,10 @@
             
 
             <!-- ======= F.A.Q Section ======= -->
-            
+            @include('landingcontent.faq')
 
             <!-- ======= Portfolio Section ======= -->
+            @include('landingcontent.portfolio')
 
             <!-- ======= Testimonials Section ======= -->
             @include('landingcontent.testimonials')
