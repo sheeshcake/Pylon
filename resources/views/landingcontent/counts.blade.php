@@ -17,7 +17,7 @@
             <div class="count-box">
             <i class="bi bi-journal-richtext" style="color: #ee6c20;"></i>
             <div>
-                <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1" class="purecounter"></span>
+                <span data-purecounter-start="0" data-purecounter-end="233" data-purecounter-duration="1" class="purecounter"></span>
                 <p>Projects</p>
             </div>
             </div>
@@ -37,7 +37,7 @@
             <div class="count-box">
             <i class="bi bi-people" style="color: #bb0852;"></i>
             <div>
-                <span data-purecounter-start="0" data-purecounter-end="15" data-purecounter-duration="1" class="purecounter"></span>
+                <span data-purecounter-start="0" data-purecounter-end="11" data-purecounter-duration="1" class="purecounter"></span>
                 <p>Hard Workers</p>
             </div>
             </div>

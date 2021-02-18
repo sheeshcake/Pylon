@@ -123,11 +123,15 @@ section {
 # Maps
 --------------------------------------------------------------*/
 #map{
-  margin: auto;
-  width: 50%;
-  height: 500px;
+  width: 100%;
+  height: 420px;
 }
-
+@media screen and (min-width: 992px) {
+  #map{
+    width: 50%;
+    height: 420px;
+  }
+}
 
 /*--------------------------------------------------------------
 # Back to top button

@@ -34,7 +34,7 @@
         <header id="header" class="header fixed-top">
             <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
-            <a href="index.html" class="logo d-flex align-items-center">
+            <a href="#" class="logo d-flex align-items-center">
                 <img src="assets/img/logo.png" alt="">
                 
             </a>
@@ -53,7 +53,7 @@
                 </li>
                 <li><a class="nav-link scrollto" href="#portfolio">Portfolio</a></li>
                 <li><a class="nav-link scrollto" href="#team">Team</a></li>
-                <li><a href="blog.html">Blog</a></li>
+                <!-- <li><a href="blog.html">Blog</a></li> -->
                 <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
                 <li><a class="getstarted scrollto" href="#about">Get Started</a></li>
                 </ul>
@@ -112,7 +112,6 @@
             
 
             <!-- ======= Portfolio Section ======= -->
-            @include('landingcontent.portfolio')
 
             <!-- ======= Testimonials Section ======= -->
             @include('landingcontent.testimonials')
@@ -121,7 +120,6 @@
             @include('landingcontent.team')
 
             <!-- ======= Recent Blog Posts Section ======= -->
-            @include('landingcontent.recentblog')
 
             <!-- ======= Contact Section ======= -->
             @include('landingcontent.contact')
