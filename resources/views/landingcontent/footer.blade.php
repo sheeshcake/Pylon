@@ -57,7 +57,7 @@
         <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
             <h4>Contact Us</h4>
             <p>Benito Labao St. Roosevelt,<br>
-            Brgy. Saray-Tibanga 9200 Iligan City
+            Brgy. Saray-Tibanga 9200 Iligan City <br>
             <strong>Phone:</strong> +98(897)67 43 67<br>
             <strong>Email:</strong> info@example.com<br>
             </p>
