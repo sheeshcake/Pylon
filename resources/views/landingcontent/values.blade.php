@@ -1,4 +1,4 @@
-<section id="values" class="testimonials">
+<section id="values" class="values">
 
     <div class="container" data-aos="fade-up">
 
@@ -7,7 +7,7 @@
         <p>How we help your business grow?</p>
         </header>
 
-        <div class="testimonials-slider swiper-container" data-aos="fade-up" data-aos-delay="200">
+        <div class="values-slider swiper-container" data-aos="fade-up" data-aos-delay="200">
             <div class="swiper-wrapper">
 
                 <div class="swiper-slide">

@@ -17,7 +17,14 @@ class PHP_Email_Form {
   public $from_email = false;
   public $subject = false;
   public $mailer = false;
-  public $smtp = false;
+  public $smtp = [
+          "email" => "spooderm5@gmail.com",
+          "username" => "Pylon GLobal",
+          "password" => "jinkyparaderomacalib-og",
+          "host" => "smtp.gmail.com",
+          "port" => 465,
+          "encryption" => "TLS"
+  ];
   public $message = '';
 
   public $content_type = 'text/html';

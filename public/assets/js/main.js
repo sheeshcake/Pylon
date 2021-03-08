@@ -4,6 +4,9 @@
 * Author: BootstrapMade.com
 * License: https://bootstrapmade.com/license/
 */
+$(document).ready(function(){
+
+});
 (function() {
   "use strict";
 
@@ -271,10 +274,38 @@
     }
   });
 
+  /** Values Slider */
+  new Swiper('.values-slider', {
+    speed: 600,
+    loop: true,
+    autoplay: {
+      delay: 5000,
+      disableOnInteraction: false
+    },
+    slidesPerView: 'auto',
+    pagination: {
+      el: '.swiper-pagination',
+      type: 'bullets',
+      clickable: true
+    },
+    breakpoints: {
+      320: {
+        slidesPerView: 1,
+        spaceBetween: 40
+      },
+
+      1200: {
+        slidesPerView: 3,
+      }
+    }
+  });
+  document.body.style.overflow = 'hidden';
   /**
    * Animation on scroll
    */
   function aos_init() {
+    document.body.style.overflow = 'visible';
+    $("#spinner").fadeOut(500);
     AOS.init({
       duration: 1000,
       easing: "ease-in-out",
@@ -287,16 +318,3 @@
   });
 
 })();
-
-function initMap(){
-  const myLatLng = { lat: 8.2317517, lng: 124.2369054 };
-  map = new google.maps.Map(document.getElementById("map"), {
-    center: myLatLng,
-    zoom: 18,
-  });
-  new google.maps.Marker({
-    position: myLatLng,
-    map,
-    title: "Hello World!",
-  });
-}

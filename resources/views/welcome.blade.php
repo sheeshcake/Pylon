@@ -15,7 +15,7 @@
 
         <!-- Google Services -->
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfNafBUY8TVgLcPMCPISzgEVnSSEIU1XQ&callback=initMap"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfNafBUY8TVgLcPMCPISzgEVnSSEIU1XQ&callback=initMap"></script>
 
         <!-- Vendor CSS Files -->
         <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -28,8 +28,24 @@
         <!-- Template Main CSS File -->
         <link href="assets/css/style.css" rel="stylesheet">
     </head>
-    <body class="antialiased">
-
+    <body class="antialiased" >
+        <div id="spinner">
+            <div class="spin">
+                <div class="spin">
+                    <div class="spin">
+                        <div class="spin">
+                            <div class="spin">
+                                <div class="spin">
+                                    <div class="spin">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <link href="assets/css/loading_style.css" rel="stylesheet">
+        </div>
         <!-- ======= Header ======= -->
         <header id="header" class="header fixed-top">
             <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
@@ -91,7 +107,13 @@
         <main id="main">
             <!-- ======= About Section ======= -->
             @include('landingcontent.about')
-
+            <div class="first-p" id="f">
+                <div class="caption px-auto py-auto">
+                    <div class="caption-box" data-aos="fade-up" data-aos-delay="600">
+                        <h1>WHY PYLON?</h1>
+                    </div>
+                </div>
+            </div>
             <!-- ======= Features Section ======= -->
             @include('landingcontent.feature')
 
@@ -130,8 +152,8 @@
         @include('landingcontent.footer')
 
         <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
         <!-- Vendor JS Files -->
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
         <script src="assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
         <script src="assets/vendor/aos/aos.js"></script>
         <script src="assets/vendor/php-email-form/validate.js"></script>
@@ -139,7 +161,21 @@
         <script src="assets/vendor/purecounter/purecounter.js"></script>
         <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
         <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-
+        
+        <script>
+        function initMap(){
+            const myLatLng = { lat: 8.2317517, lng: 124.2369054 };
+            map = new google.maps.Map(document.getElementById("map"), {
+                center: myLatLng,
+                zoom: 18,
+            });
+            new google.maps.Marker({
+                position: myLatLng,
+                map,
+                title: "Hello World!",
+            });
+        }
+        </script>
         <!-- Template Main JS File -->
         <script src="assets/js/main.js"></script>
 
