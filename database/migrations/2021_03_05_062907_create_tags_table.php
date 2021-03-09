@@ -15,7 +15,7 @@ class CreateTagsTable extends Migration
     {
         Schema::create('tags', function (Blueprint $table) {
             $table->id();
-            $table->foreign('blog_id')->references('id')->on('blogs');
+            $table->foreignId('blog_id');
             $table->text("tag_name");
             $table->timestamps();
         });
