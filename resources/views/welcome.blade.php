@@ -143,6 +143,7 @@
             @include('landingcontent.team')
 
             <!-- ======= Recent Blog Posts Section ======= -->
+            @include('landingcontent.recentblog')
 
             <!-- ======= Contact Section ======= -->
             @include('landingcontent.contact')

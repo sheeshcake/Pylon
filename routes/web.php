@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\BlogsController;
+use App\Http\Controllers\SiteController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,26 +17,37 @@ use App\Http\Controllers\BlogsController;
 |
 */
 
-//dashboard
-Route::get('/dashboard', function () {
-    return view('content.dashboard');
-})->name('dashboard')->middleware('auth');
 
 
-//blogs
-Route::get('/blogs', 'BlogsController@ShowAllBlogs')->name('blogs')->middleware('auth');
 
 
-Route::get('/blogs/{id}', 'BlogsController@ShowBlog')->middleware('auth');
+Route::group(['middleware' => ['auth']], function(){
+    //dashboard
+    Route::get('/dashboard', function () {
+        return view('content.dashboard');
+    })->name('dashboard');
+    //blogs
+    Route::get('/blogs', 'BlogsController@ShowAllBlogs')->name('blogs');
 
-//portfolio
-Route::get('/portfolio', function () {
-    return view('content.portfolio');
-})->name('portfolio')->middleware('auth');
+    Route::get('/blogs/{id}', 'BlogsController@ShowBlog');
 
-Route::get('/profile', function () {
-    echo "hello";
-})->name('profile')->middleware('auth');
+    Route::get('/new-blog', 'BlogsController@ShowNewBlog');
+    
+    Route::post('/new-blog', 'BlogsController@AddNewBlog')->name('addblog');
+
+    Route::post('/blogs', 'BlogsController@UpdateBlog')->name('updateblog');
+
+    Route::get('/remove-blog/{id}', 'BlogsController@RemoveBlog')->name('removeblog');
+
+    //portfolio
+    Route::get('/portfolio', function () {
+        return view('content.portfolio');
+    })->name('portfolio');
+
+    Route::get('/profile', function () {
+        echo "hello";
+    })->name('profile');
+});
 
 //logout
 Route::get('/logout', 'LogoutController@logout')->name('logout');
@@ -52,6 +64,7 @@ Route::post('/login', 'LoginController@DoLogin')->name('login');
 
 
 //site
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', "SiteController@ShowSite");
+
+Route::get('/blog/{id}', "SiteController@ShowBlog");
+Route::get('/blog', "SiteController@ShowAllBlog")->name('blog');

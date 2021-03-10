@@ -22,16 +22,27 @@
                 </div>
             </div>
             <div class="container-fluid">
+                @if (\Session::has('success'))
+                    <div class="alert alert-success">{!! \Session::get('success') !!}</div>
+                @endif
                 <div class="row">
                     <div class="col-12">
-                    @foreach ($blogs as $blog)
-                        <a class="card" href="/blogs/{{ $blog->id }}">
-                            <div class="card-body">
-                                {{ $blog->blog_title }}              
+                    <a href="/new-blog" class="btn btn-success mb-3">Add New Blog</a>
+                        @foreach ($blogs as $blog)
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col">
+                                            <h3>{{ $blog->blog_title }}</h3>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <a href="/remove-blog/{{ $blog->id }}" class="btn btn-danger mx-1">Delete</a>
+                                            <a href="/blogs/{{ $blog->id }}" class="btn btn-primary mx-1">Edit</a>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </a>
-                    @endforeach
-
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -48,6 +59,12 @@
 <script src="js/waves.js"></script>
 <script src="js/sidebarmenu.js"></script>
 <script src="js/custom.js"></script>
-
+<script>
+    $(document).ready(function(){
+        setTimeout(() => {
+            $(".alert").slideUp(500);
+        }, 3000);
+    });
+</script>
 
 @endsection
