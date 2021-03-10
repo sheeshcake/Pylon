@@ -37,7 +37,7 @@
                                         </div>
                                         <div class="col-md-2">
                                             <a href="/remove-blog/{{ $blog->id }}" class="btn btn-danger mx-1">Delete</a>
-                                            <a href="/blogs/{{ $blog->id }}" class="btn btn-primary mx-1">Edit</a>
+                                            <a href="/blog/{{ $blog->id }}" class="btn btn-primary mx-1">Edit</a>
                                         </div>
                                     </div>
                                 </div>

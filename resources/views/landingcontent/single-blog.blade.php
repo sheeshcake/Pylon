@@ -1,4 +1,4 @@
-@extends('blog')
+@extends('blog-layout')
 
 @section('title')
     {{ $blog[0]->blog_title }}
@@ -10,7 +10,7 @@
 
 <ol>
   <li><a href="/">Home</a></li>
-  <li><a href="{{ route('blog') }}">Blog</a></li>
+  <li><a href="{{ route('pylonblog') }}">Blogs</a></li>
   <li>{{ $blog[0]->blog_title }}</li>
 </ol>
 <h2>{{ $blog[0]->blog_title }}</h2>

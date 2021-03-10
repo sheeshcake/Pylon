@@ -64,7 +64,14 @@ Route::post('/login', 'LoginController@DoLogin')->name('login');
 
 
 //site
-Route::get('/', "SiteController@ShowSite");
 
-Route::get('/blog/{id}', "SiteController@ShowBlog");
-Route::get('/blog', "SiteController@ShowAllBlog")->name('blog');
+
+
+Route::group(['prefix' => '/'], function () {
+    Route::get('/', "SiteController@index");
+    Route::get('/pylonblog/{id}', "SiteController@show");
+    Route::get('/pylonblog', "SiteController@ShowAllBlog")->name('pylonblog');
+});
+
+
+

@@ -1864,6 +1864,10 @@ section {
   line-height: 1;
 }
 
+.entry-content img{
+  width: 100%;
+}
+
 .blog .entry .entry-content p {
   line-height: 24px;
 }

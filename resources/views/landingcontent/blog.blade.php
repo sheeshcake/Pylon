@@ -1,4 +1,4 @@
-@extends('blog')
+@extends('blog-layout')
 
 @section('title')
     Blog
@@ -10,9 +10,9 @@
 
 <ol>
   <li><a href="/">Home</a></li>
-  <li><a href="blog.html">Blog</a></li>
+  <li><a href="{{ route('pylonblog') }}">Blogs</a></li>
 </ol>
-<h2>Blog</h2>
+<h2>Blogs</h2>
 
 </div>
 
@@ -27,7 +27,7 @@
             </div>
 
             <h2 class="entry-title">
-            <a href="blog/{{ $blog->id }}">{{ $blog->blog_title }}</a>
+            <a href="{{ route('pylonblog') }}/{{ $blog->id }}">{{ $blog->blog_title }}</a>
             </h2>
 
             <div class="entry-meta">
@@ -39,12 +39,9 @@
             </div>
 
             <div class="entry-content">
-            <p>
-                Similique neque nam consequuntur ad non maxime aliquam quas. Quibusdam animi praesentium. Aliquam et laboriosam eius aut nostrum quidem aliquid dicta.
-                Et eveniet enim. Qui velit est ea dolorem doloremque deleniti aperiam unde soluta. Est cum et quod quos aut ut et sit sunt. Voluptate porro consequatur assumenda perferendis dolore.
-            </p>
+            {!! Str::limit($blog->blog_content, 200, $end='.......') !!}
             <div class="read-more">
-                <a href="blog/{{ $blog->id }}">Read More</a>
+                <a href="{{ route('pylonblog') }}/{{ $blog->id }}">Read More</a>
             </div>
             </div>
 

@@ -14,7 +14,7 @@
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="{{ route('blogs') }}">Blogs</a></li>
+                                    <li class="breadcrumb-item"><a href="{{ route('blog') }}">Blogs</a></li>
                                     <li class="breadcrumb-item blog_title">New Blog</li>
                                 </ol>
                             </nav>
