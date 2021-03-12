@@ -23,39 +23,13 @@
                 </div>
             </div>
             <div class="container-fluid">
-                @if (\Session::has('success'))
-                    <div class="alert alert-success">{!! \Session::get('success') !!}</div>
-                @endif
                 <div class="row">
                     <div class="col-12">
-                        <form enctype="multipart/form-data" action="{{ route('updateblog') }}" method="POST">
-                            @csrf
-                            <input type="text" hidden value="{{ $blog[0]->id }}" name="blog_id">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h3>{{ $blog[0]->blog_title }}</h3>
-                                </div>
-                                <div class="card-body">
-                                    <div class="form-group">
-                                        <label for="title_input">Blog Title</label>
-                                        <input type="text" class="form-control" id="title_input" value="{{ $blog[0]->blog_title }}" name="blog_title">
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="file" class="custom-file-input" name="blog_image" id="image_input" required value="{{ $blog[0]->blog_image }}">
-                                        <label class="custom-file-label" for="image_input">Blog Image</label>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="content_input">Blog Content</label>
-                                        <textarea name="blog_content" id="content_input" cols="30" rows="10" >{{ $blog[0]->blog_content }}</textarea>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="remarks_input">Blog Remarks</label>
-                                        <input type="text" class="form-control" id="remarks_input" name="blog_remarks" value="{{ $blog[0]->blog_remarks }}" required>
-                                    </div>
-                                    <input type="submit" class="btn btn-success" value="Save"> 
-                                </div>
+                        <div class="card">
+                            <div class="card-body">
+                                This is some text within a card block.
                             </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -71,14 +45,5 @@
 <script src="../js/waves.js"></script>
 <script src="../js/sidebarmenu.js"></script>
 <script src="../js/custom.js"></script>
-<script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
-<script>
-    CKEDITOR.replace('content_input');
-    $(document).ready(function(){
-        setTimeout(() => {
-            $(".alert").slideUp(500);
-        }, 3000);
-    });
-</script>
 
 @endsection
