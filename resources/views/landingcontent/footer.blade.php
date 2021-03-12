@@ -21,7 +21,7 @@
         <div class="row gy-4">
         <div class="col-lg-5 col-md-12 footer-info">
             <a href="index.html" class="logo d-flex align-items-center">
-            <img src="assets/img/logo.png" alt="">
+            <img src="{{ url('/') }}/assets/img/logo.png" alt="">
             </a>
             <p>Like and Follow us on: </p>
             <div class="social-links">

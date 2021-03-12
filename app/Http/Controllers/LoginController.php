@@ -17,7 +17,11 @@ class LoginController extends Controller
         if(Auth::check()){
             return redirect('/dashboard');
         }else{
-            return View::make('content.login');
+            if(User::all()->isEmpty()){
+                return redirect('register');
+            }else{
+                return View::make('content.login');
+            }
         }
     }
 

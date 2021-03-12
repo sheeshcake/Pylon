@@ -2,7 +2,7 @@
 @extends('home')
 
 @section('styles')
-    <link href="css/style.min.css" rel="stylesheet">
+    <link href="{{ url('/') }}/css/style.min.css" rel="stylesheet">
 @endsection
 
 @section('content')
@@ -39,12 +39,12 @@
 
 @section('scripts')
 
-<script src="../assets/plugins/jquery/dist/jquery.min.js"></script>
-<script src="../assets/plugins/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-<script src="js/app-style-switcher.js"></script>
-<script src="js/waves.js"></script>
-<script src="js/sidebarmenu.js"></script>
-<script src="js/custom.js"></script>
+<script src="{{ url('/') }}/assets/plugins/jquery/dist/jquery.min.js"></script>
+<script src="{{ url('/') }}/assets/plugins/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="{{ url('/') }}/js/app-style-switcher.js"></script>
+<script src="{{ url('/') }}/js/waves.js"></script>
+<script src="{{ url('/') }}/js/sidebarmenu.js"></script>
+<script src="{{ url('/') }}/js/custom.js"></script>
 
 
 @endsection

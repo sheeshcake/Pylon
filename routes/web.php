@@ -1,11 +1,13 @@
 <?php
 
-use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\BlogsController;
+use App\Http\Controllers\SiteController;
+use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\categorysController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,7 +19,48 @@ use App\Http\Controllers\BlogsController;
 |
 */
 
-//dashboard
+
+
+
+
+Route::group(['middleware' => ['auth']], function(){
+    //dashboard
+    Route::get('/dashboard', function () {
+        return view('content.dashboard');
+    })->name('dashboard');
+
+    Route::prefix('/blogs')->group(function(){
+        //blogs
+        Route::get('/', 'BlogsController@ShowAllBlogs');
+        Route::get('/viewblog/{id}', 'BlogsController@ShowBlog')->name('viewblog');
+        Route::get('/newblog', 'BlogsController@ShowNewBlog')->name('newblog');
+        Route::post('/newblog', 'BlogsController@AddNewBlog')->name('addblog');
+        Route::post('/updateblog', 'BlogsController@UpdateBlog')->name('updateblog');
+        Route::get('/removeblog/{id}', 'BlogsController@RemoveBlog')->name('removeblog');
+    });
+
+    Route::prefix('/tags')->group(function(){
+        Route::post('/addtag', "TagsController@AddTag");
+        Route::post('/updatetag/{id}', "TagsController@UpdateTag");
+        Route::post('/removetag/{id}', "TagsController@RemoveTag");
+    });
+
+    Route::prefix('/categories')->group(function(){
+        Route::post('/addcategory', "CategoriesController@AddCategory");
+        Route::post('/updatecategory/{id}', "CategoriesController@UpdateCategory");
+        Route::post('/removecategory/{id}', "CategoriesController@RemoveCategory");
+    });
+
+
+    //portfolio
+    Route::get('/portfolio', function () {
+        return view('content.portfolio');
+    })->name('portfolio');
+
+    Route::get('/profile', function () {
+        echo "hello";
+    })->name('profile');
+});
 
 //logout
 Route::get('/logout', 'LogoutController@logout')->name('logout');
@@ -27,39 +70,21 @@ Route::get('/register', 'RegisterController@ShowRegister');
 
 Route::post('/register', 'RegisterController@DoRegister')->name('register');
 
-// //login
-// Route::get('/login', 'LoginController@ShowLogin');
+//login
+Route::get('/login', 'LoginController@ShowLogin');
 
-// Route::post('/login', 'LoginController@DoLogin')->name('login');
+Route::post('/login', 'LoginController@DoLogin')->name('login');
 
-Route::any('login', 'AuthController');
-
-Route::group(['middleware' => ['auth']], function () {
-    Route::get('/dashboard', function () {
-        return view('content.dashboard');
-    })->name('dashboard');
-    
-    
-    //blogs
-    Route::get('/blogs', 'BlogsController@ShowAllBlogs')->name('blogs');
-    
-    
-    Route::get('/blogs/{id}', 'BlogsController@ShowBlog');
-    
-    //portfolio
-    Route::get('/portfolio', function () {
-        return view('content.portfolio');
-    })->name('portfolio');
-    
-    Route::get('/profile', function () {
-        echo "hello";
-    })->name('profile');
-    
-});
 
 //site
-Route::get('/', function () {
-    return view('welcome');
+
+
+
+Route::group(['prefix' => '/'], function () {
+    Route::get('/', "SiteController@index");
+    Route::get('/pylonblog/{id}', "SiteController@show");
+    Route::get('/team/{id}', "SiteController@ShowAllUserBlogs");
+    Route::get('/pylonblog', "SiteController@ShowAllBlog")->name('pylonblog');
 });
 
 

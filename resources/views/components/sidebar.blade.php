@@ -15,7 +15,7 @@
                 </a>
             </li>
             <li class="sidebar-item">
-                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('blogs') }}" aria-expanded="false">
+                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/blogs" aria-expanded="false">
                     <i class="mdi me-2 mdi-gauge"></i>
                     <span class="hide-menu">Blogs</span>
                 </a>

@@ -18,6 +18,10 @@ class CreateUsersTable extends Migration
             $table->string('f_name');
             $table->string('l_name');
             $table->string('username');
+            $table->string('user_image');
+            $table->string('user_insta')->default('');
+            $table->string('user_twitter')->default('');
+            $table->string('user_fb')->default('');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');

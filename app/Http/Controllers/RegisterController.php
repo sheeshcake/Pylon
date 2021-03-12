@@ -42,12 +42,18 @@ class RegisterController extends Controller
 		}
 		else{
             $data = $request->input();
+            $files = $request->file('user_image');
 			try{
+                if($request->hasFile('user_image'))
+                {
+                    $files->move('assets/img/team/', $files->getClientOriginalName()); 
+                }
 				$user = new User;
                 $user->f_name = $data['f_name'];
                 $user->l_name = $data['l_name'];
 				$user->username = $data['username'];
                 $user->email = $data['email'];
+                $user->user_image = $files->getClientOriginalName();
                 $user->password = Hash::make($data['password']);
 				$user->save();
 				return redirect('login')->withInput($request->input())->with([

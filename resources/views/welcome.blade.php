@@ -10,23 +10,23 @@
         <meta content="" name="keywords">
 
         <!-- Favicons -->
-        <link href="assets/img/favicon.png" rel="icon">
-        <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+        <link href="{{ url('/') }}/assets/img/favicon.png" rel="icon">
+        <link href="{{ url('/') }}/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
         <!-- Google Services -->
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfNafBUY8TVgLcPMCPISzgEVnSSEIU1XQ&callback=initMap"></script>
 
         <!-- Vendor CSS Files -->
-        <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-        <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-        <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-        <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-        <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-        <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+        <link href="{{ url('/') }}/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="{{ url('/') }}/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+        <link href="{{ url('/') }}/assets/vendor/aos/aos.css" rel="stylesheet">
+        <link href="{{ url('/') }}/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+        <link href="{{ url('/') }}/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+        <link href="{{ url('/') }}/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
 
         <!-- Template Main CSS File -->
-        <link href="assets/css/style.css" rel="stylesheet">
+        <link href="{{ url('/') }}/assets/css/style.css" rel="stylesheet">
     </head>
     <body class="antialiased" >
         <div id="spinner">
@@ -44,14 +44,14 @@
                     </div>
                 </div>
             </div>
-            <link href="assets/css/loading_style.css" rel="stylesheet">
+            <link href="{{ url('/') }}/assets/css/loading_style.css" rel="stylesheet">
         </div>
         <!-- ======= Header ======= -->
         <header id="header" class="header fixed-top">
             <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
             <a href="#" class="logo d-flex align-items-center">
-                <img src="assets/img/logo.png" alt="">
+                <img src="{{ url('/') }}/assets/img/logo.png" alt="">
                 
             </a>
 
@@ -97,7 +97,7 @@
                 </div>
                 </div>
                 <div class="col-lg-6 hero-img" data-aos="zoom-out" data-aos-delay="200">
-                <img src="assets/img/hero-img.png" class="img-fluid" alt="">
+                <img src="{{ url('/') }}/assets/img/hero-img.png" class="img-fluid" alt="">
                 </div>
             </div>
             </div>
@@ -155,13 +155,13 @@
         <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
         <!-- Vendor JS Files -->
         <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-        <script src="assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
-        <script src="assets/vendor/aos/aos.js"></script>
-        <script src="assets/vendor/php-email-form/validate.js"></script>
-        <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-        <script src="assets/vendor/purecounter/purecounter.js"></script>
-        <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-        <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+        <script src="{{ url('/') }}/assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+        <script src="{{ url('/') }}/assets/vendor/aos/aos.js"></script>
+        <script src="{{ url('/') }}/assets/vendor/php-email-form/validate.js"></script>
+        <script src="{{ url('/') }}/assets/vendor/swiper/swiper-bundle.min.js"></script>
+        <script src="{{ url('/') }}/assets/vendor/purecounter/purecounter.js"></script>
+        <script src="{{ url('/') }}/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+        <script src="{{ url('/') }}/assets/vendor/glightbox/js/glightbox.min.js"></script>
         
         <script>
         function initMap(){
@@ -178,7 +178,7 @@
         }
         </script>
         <!-- Template Main JS File -->
-        <script src="assets/js/main.js"></script>
+        <script src="{{ url('/') }}/assets/js/main.js"></script>
 
     </body>
 </html>
