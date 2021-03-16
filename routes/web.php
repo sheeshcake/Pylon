@@ -7,7 +7,6 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\BlogsController;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\CategoriesController;
-use App\Http\Controllers\categorysController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -40,15 +39,15 @@ Route::group(['middleware' => ['auth']], function(){
     });
 
     Route::prefix('/tags')->group(function(){
-        Route::post('/addtag', "TagsController@AddTag");
-        Route::post('/updatetag/{id}', "TagsController@UpdateTag");
-        Route::post('/removetag/{id}', "TagsController@RemoveTag");
+        Route::post('/addtag', "TagsController@AddTag")->name("addtag");
+        Route::post('/updatetag/{id}', "TagsController@UpdateTag")->name("updatetag");
+        Route::get('/removetag/{id}', "TagsController@RemoveTag")->name("removetag");
     });
 
     Route::prefix('/categories')->group(function(){
-        Route::post('/addcategory', "CategoriesController@AddCategory");
-        Route::post('/updatecategory/{id}', "CategoriesController@UpdateCategory");
-        Route::post('/removecategory/{id}', "CategoriesController@RemoveCategory");
+        Route::post('/addcategory', "CategoriesController@AddCategory")->name("addcategory");
+        Route::post('/updatecategory/{id}', "CategoriesController@UpdateCategory")->name("updatecategory");
+        Route::get('/removecategory/{id}', "CategoriesController@RemoveCategory")->name("removecategory");
     });
 
 

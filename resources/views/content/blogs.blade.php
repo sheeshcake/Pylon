@@ -3,6 +3,7 @@
 
 @section('styles')
     <link href="{{ url('/') }}/css/style.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 @endsection
 
 @section('content')
@@ -50,9 +51,25 @@
                                 <h3>Tags</h3>
                             </div>
                             <div class="card-body">
-                            
+                                <div id="tag-alert" style="display: none"></div>
+                                @foreach($data["tags"] as $tag)
+                                    <div class="input-group">
+                                        <input type="text" id="input_tag_{{ $tag->id }}" class="form-control" value="{{ $tag->tag_name }}">
+                                        <div class="input-group-prepend input-group-append">
+                                            <button class="btn btn-outline-success updatetag" value="{{ $tag->id }}">
+                                                <i class="fa fa-refresh" aria-hidden="true"></i>
+                                            </button>
+                                        </div>
+                                        <div class="input-group-append">
+                                            <button class="btn btn-outline-danger deletetag" value="{{ $tag->id }}">
+                                                <i class="fa fa-trash" aria-hidden="true"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                @endforeach
                                 <hr>
-                                <form action="" method="post">
+                                <form action="tags/addtag" method="post">
+                                    @csrf
                                     <label for="">Add Tag</label>
                                     <div class="input-group">
                                         <input type="text" name="tag_name" class="form-control" placeholder="Tag Name">
@@ -68,11 +85,28 @@
                                 <h3>Categories</h3>
                             </div>
                             <div class="card-body">
+                                <div id="category-alert" style="display: none"></div>
+                                @foreach($data["categories"] as $category)
+                                    <div class="input-group">
+                                        <input type="text" id="input_cat_{{ $category->id }}" class="form-control" value="{{ $category->category_name }}">
+                                        <div class="input-group-prepend input-group-append">
+                                            <button class="btn btn-outline-success updatecat" value="{{ $category->id }}">
+                                                <i class="fa fa-refresh" aria-hidden="true"></i>
+                                            </button>
+                                        </div>
+                                        <div class="input-group-append">
+                                            <button class="btn btn-outline-danger deletecat" value="{{ $category->id }}">
+                                                <i class="fa fa-trash" aria-hidden="true"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                @endforeach
                                 <hr>
-                                <form action="" method="post">
+                                <form action="categories/addcategory" method="post">
+                                    @csrf
                                     <label for="">Add Category</label>
                                     <div class="input-group">
-                                        <input type="text" name="tag_name" class="form-control" placeholder="Category Name">
+                                        <input type="text" name="category_name" class="form-control" placeholder="Category Name">
                                         <div class="input-group-append">
                                             <input type="submit" class="btn btn-outline-success" value="Add">
                                         </div>
@@ -101,6 +135,70 @@
         setTimeout(() => {
             $(".alert").slideUp(500);
         }, 3000);
+    });
+    $(".updatecat").click(function(){
+        var $id = $(this).val();
+        $.ajax({
+            url: "categories/updatecategory/" + $id,
+            method: "POST",
+            data: {
+                category_name: $("#input_cat_" + $id).val(),
+                "_token": "{{ csrf_token() }}"
+            },
+            success: function(d){
+                $("#category-alert").addClass("alert alert-success").html(d).slideDown(500);
+                $("#input_cat_" + $id).addClass("border border-success");
+                setTimeout(() => {
+                    $("#category-alert").slideUp(500);
+                    $("#input_cat_" + $id).removeClass("border border-success");
+                }, 3000);
+            }
+        });
+    });
+    $(".updatetag").click(function(){
+        var $id = $(this).val();
+        $.ajax({
+            url: "tags/updatetag/" + $id,
+            method: "POST",
+            data: {
+                tag_name: $("#input_tag_" + $id).val(),
+                "_token": "{{ csrf_token() }}"
+                },
+            success: function(d){
+                $("#tag-alert").addClass("alert alert-success").html(d).slideDown(500);
+                $("#input_tag_" + $id).addClass("border border-success");
+                setTimeout(() => {
+                    $("#tag-alert").slideUp(500);
+                    $("#input_tag_" + $id).removeClass("border border-success");
+                }, 3000);
+            }
+        });
+    });
+    $(".deletetag").click(function(){
+        $.ajax({
+            url: "tags/removetag/" + $(this).val(),
+            method: "GET",
+            success: function(d){
+                $("#tag-alert").addClass("alert alert-success").html(d).slideDown(500);
+                setTimeout(() => {
+                    $("#tag-alert").slideUp(500);
+                    location.reload();
+                }, 3000);
+            }
+        });
+    });
+    $(".deletecat").click(function(){
+        $.ajax({
+            url: "categories/removecategory/" + $(this).val(),
+            method: "GET",
+            success: function(d){
+                $("#category-alert").addClass("alert alert-success").html(d).slideDown(500);
+                setTimeout(() => {
+                    $("#category-alert").slideUp(500);
+                    location.reload();
+                }, 3000);
+            }
+        });
     });
 </script>
 
