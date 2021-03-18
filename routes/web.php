@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\BlogsController;
+use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\CategoriesController;
 /*
@@ -52,9 +53,20 @@ Route::group(['middleware' => ['auth']], function(){
 
 
     //portfolio
-    Route::get('/portfolio', function () {
-        return view('content.portfolio');
-    })->name('portfolio');
+    Route::prefix('/portfolio')->group(function(){
+        Route::get("/", "PortfolioController@ShowPortfolios")->name('portfolio');
+        Route::get('/viewportfolio/{id}', 'PortfolioController@ShowPortfolio')->name('viewportfolio');
+        Route::get('/newportfolio', 'PortfolioController@ShowNewPortfolio')->name('newportfolio');
+        Route::post('/newportfolio', 'PortfolioController@AddNewPortfolio')->name('addportfolio');
+        Route::post('/updateportfolio', 'PortfolioController@UpdatePortfolio')->name('updateportfolio');
+        Route::get('/removeportfolio/{id}', 'PortfolioController@RemovePortfolio')->name('removeportfolio');
+    });
+
+    Route::prefix('/portfoliocategories')->group(function(){
+        Route::post('/addportfoliocategory', "CategoriesController@AddCategory")->name("addcategory");
+        Route::post('/updateportfoliocategory/{id}', "CategoriesController@UpdateCategory")->name("updatecategory");
+        Route::get('/removeportfoliocategory/{id}', "CategoriesController@RemoveCategory")->name("removecategory");
+    });
 
     Route::get('/profile', function () {
         echo "hello";
