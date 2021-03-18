@@ -36,7 +36,23 @@
 </head>
 
 <body>
-
+    <div id="spinner">
+        <div class="spin">
+            <div class="spin">
+                <div class="spin">
+                    <div class="spin">
+                        <div class="spin">
+                            <div class="spin">
+                                <div class="spin">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <link href="{{ url('/') }}/assets/css/loading_style.css" rel="stylesheet">
+    </div>
     <!-- ======= Header ======= -->
     <header id="header" class="header fixed-top">
         <div class="container-fluid container-xl d-flex align-items-center justify-content-between">

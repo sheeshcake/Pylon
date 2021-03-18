@@ -7,6 +7,9 @@ use App\Models\Blogs;
 use App\Models\User;
 use App\Models\Tags;
 use App\Models\Categories;
+use App\Models\Portfolios;
+use App\Models\PortfolioCategories;
+use App\Models\PortfolioImages;
 
 class SiteController extends Controller
 {
@@ -17,8 +20,15 @@ class SiteController extends Controller
      */
     public function index()
     {
+        $portfolios = Portfolios::select(["portfolios.id as portfolio_id", "portfolios.*", "portfolio_categories.*", "portfolio_images.*"])
+                                ->join("portfolio_images", "portfolio_images.portfolio_id", "=", "portfolios.id")
+                                ->join("portfolio_categories", "portfolio_categories.id", "=", "portfolios.category_id")
+                                ->groupBy("portfolios.id")
+                                ->get();
+        $portfoliocategories = PortfolioCategories::all();
         $blogs = Blogs::orderBy('id', 'desc')->limit('3')->get();
-        return view('welcome')->with('data', ['blogs' => $blogs]);
+        // dd($portfolios);
+        return view('welcome')->with('data', ['blogs' => $blogs, "portfolios" => $portfolios, "portfoliocategories" => $portfoliocategories]);
     }
 
     /**
