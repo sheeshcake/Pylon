@@ -1,6 +1,6 @@
 <section id="features" class="features">
 
-    <div class="container" data-aos="fade-up">
+    <div class="container" data-aos="fade-up" >
 
         <!-- <header class="section-header">
         <h2>Features</h2>
@@ -186,10 +186,11 @@
                     <p>If you think we aren’t growing your business, you can cancel anytime.</p>
                 </div>
                 </div>
-
+               
+            </div> 
+            
             </div>
-            </div>
-
+            
         </div>
 
         </div><!-- End Feature Icons -->

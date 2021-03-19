@@ -578,7 +578,7 @@ section {
 .caption-box {
     margin: auto;
     padding: 2%;
-    width: 500px;
+    width: 400px;
     background: #fff;
     border-radius: 5px;
     box-shadow: 0px 0 20px rgb(0 0 0 / 65%);
@@ -608,13 +608,14 @@ section {
 --------------------------------------------------------------*/
 
 .about {
+    background-color: #2494ce;
     padding-top: auto;
     padding-bottom: auto;
     height: 100vh;
 }
 
 .about .content {
-    background-color: #f6f9ff;
+    background-color: #ffffff;
     padding: 40px;
 }
 
@@ -667,6 +668,12 @@ section {
 /*--------------------------------------------------------------
 # Values
 --------------------------------------------------------------*/
+
+.values {
+    background: url(../img/background2.png);
+    background-size: cover;
+    background-position: center;
+}
 
 .values .values-item {
     box-sizing: content-box;
@@ -759,6 +766,7 @@ section {
 --------------------------------------------------------------*/
 
 .counts {
+    background-color: #daf2fc;
     padding: 70px 0 60px;
 }
 
@@ -796,6 +804,18 @@ section {
 /*--------------------------------------------------------------
 # Features
 --------------------------------------------------------------*/
+
+#features {
+    background: url("../img/Background1.png");
+    background-size: cover;
+    background-position: center;
+}
+
+@media (max-width: 992px) {
+    #features {
+        font-size: 28px;
+    }
+}
 
 .features .feature-box {
     padding: 24px 20px;
@@ -848,7 +868,6 @@ section {
 }
 
 .features .feture-tabs .nav-link {
-    background: none;
     text-transform: uppercase;
     font-size: 15px;
     font-weight: 600;
@@ -1459,6 +1478,10 @@ section {
 # Testimonials
 --------------------------------------------------------------*/
 
+.testimonials {
+    background-color: #daf2fc;
+}
+
 .testimonials .testimonial-item {
     box-sizing: content-box;
     padding: 30px;
@@ -1679,6 +1702,10 @@ section {
 # Recent Blog Posts
 --------------------------------------------------------------*/
 
+.recent-blog-posts {
+    background-color: #daf2fc;
+}
+
 .recent-blog-posts .post-box {
     box-shadow: 0px 0 30px rgba(1, 41, 112, 0.08);
     transition: 0.3s;
@@ -1747,7 +1774,7 @@ section {
 
 .contact .info-box {
     color: #444444;
-    background: #fafbff;
+    background: #daf2fc;
     padding: 30px;
 }
 
@@ -1772,7 +1799,7 @@ section {
 }
 
 .contact .php-email-form {
-    background: #fafbff;
+    background: #daf2fc;
     padding: 30px;
     height: 100%;
 }
@@ -2394,7 +2421,7 @@ section {
 --------------------------------------------------------------*/
 
 .footer {
-    background: #f6f9ff;
+    background: #daf2fc;
     padding: 0 0 30px 0;
     font-size: 14px;
 }

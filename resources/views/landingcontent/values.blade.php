@@ -1,6 +1,6 @@
 <section id="values" class="values">
 
-    <div class="container" data-aos="fade-up">
+    <div class="container mt-5" data-aos="fade-up">
 
         <header class="section-header">
         <h2>Business Simplified</h2>

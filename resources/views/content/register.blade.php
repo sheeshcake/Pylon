@@ -14,34 +14,38 @@
 @section('content')
 <div class="row justify-content-center align-items-center mt-5">
     <div class="col-md-4">
-        <div class="card p-3">
-            <h4>Register</h4>
+        <div class="card p-5">
+            <center>
+            <h2>Create Account</h2>
+            <h5>Get started with your new account</h5>
+            </center>
             <form method="POST" enctype="multipart/form-data" action="{{ route('register') }}">
                 @csrf
+                <br>
                 <div class="form-group">
-                    <label for="f_name">First Name</label>
-                    <input type="text" class="form-control" id="f_name" name="f_name" placeholder="Enter First Name" required>
-                </div>
+                    <!-- <label for="f_name">First Name</label> -->
+                    <input type="text" class="form-control" id="f_name" name="f_name" placeholder="First Name" required>
+                </div><br>
                 <div class="form-group">
-                    <label for=";_name">Last Name</label>
-                    <input type="text" class="form-control" id="l_name" name="l_name" placeholder="Enter Last Name" required>
-                </div>
+                    <!-- <label for=";_name">Last Name</label> -->
+                    <input type="text" class="form-control" id="l_name" name="l_name" placeholder="Last Name" required>
+                </div><br>
                 <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" class="form-control" id="email" name="email" placeholder="Enter E-mail" required>
-                </div>
+                    <!-- <label for="email">Email</label> -->
+                    <input type="email" class="form-control" id="email" name="email" placeholder="E-mail" required>
+                </div><br>
                 <div class="form-group">
-                    <label for="email">User Image</label>
+                    <!-- <label for="email">User Image</label> -->
                     <input type="file" class="form-control" id="user_image" name="user_image" required>
-                </div>
+                </div><br>
                 <div class="form-group">
-                    <label for="username">Username</label>
-                    <input type="text" class="form-control" id="username" name="username" placeholder="Enter Username" required>
-                </div>
+                    <!-- <label for="username">Username</label> -->
+                    <input type="text" class="form-control" id="username" name="username" placeholder="Username" required>
+                </div><br>
                 <div class="form-group">
-                    <label for="password">Password</label>
+                    <!-- <label for="password">Password</label> -->
                     <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
-                </div>
+                </div><br>
                 <div class="form-check">
                     <input type="checkbox" class="form-check-input" id="exampleCheck1">
                     <label class="form-check-label" for="exampleCheck1">Check me out</label>

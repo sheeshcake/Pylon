@@ -85,8 +85,8 @@
             <div class="container">
             <div class="row">
                 <div class="col-lg-6 d-flex flex-column justify-content-center">
-                <h1 data-aos="fade-up">Business Simplified</h1>
-                <h2 data-aos="fade-up" data-aos-delay="400">Simplifying business is all about utilizing the creative resources out there in the technology-advanced world, it implies that streamlining your business with digital advancement can make life a less of a headache for you and your business</h2>
+                <h1 class="mb-4" data-aos="fade-up">Business Simplified</h1>
+                <h4 data-aos="fade-up" data-aos-delay="400">Simplifying business is all about utilizing the creative resources out there in the technology-advanced world, it implies that streamlining your business with digital advancement can make life a less of a headache for you and your business</h4>
                 <div data-aos="fade-up" data-aos-delay="600">
                     <div class="text-center text-lg-start">
                     <a href="#about" class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center">
@@ -107,7 +107,7 @@
         <main id="main">
             <!-- ======= About Section ======= -->
             @include('landingcontent.about')
-            <div class="first-p" id="f">
+            <div class="first-p " id="f">
                 <div class="caption px-auto py-auto">
                     <div class="caption-box" data-aos="fade-up" data-aos-delay="600">
                         <h1>WHY PYLON?</h1>
