@@ -68,7 +68,10 @@
                 <!-- ============================================================== -->
                 <!-- User profile and search -->
                 <!-- ============================================================== -->
-                <a href="{{ route('logout') }}">Logout</a>
+                <a href="{{ route('logout') }}" class="nav-link">
+                    Logout
+                    <i class="mdi me-2 mdi-logout"></i>
+                </a>
             </ul>
         </div>
     </nav>

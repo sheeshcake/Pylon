@@ -63,9 +63,9 @@ Route::group(['middleware' => ['auth']], function(){
     });
 
     Route::prefix('/portfoliocategories')->group(function(){
-        Route::post('/addportfoliocategory', "CategoriesController@AddCategory")->name("addcategory");
-        Route::post('/updateportfoliocategory/{id}', "CategoriesController@UpdateCategory")->name("updatecategory");
-        Route::get('/removeportfoliocategory/{id}', "CategoriesController@RemoveCategory")->name("removecategory");
+        Route::post('/addportfoliocategory', "PortfolioCategoriesController@AddCategory")->name("addcategory");
+        Route::post('/updateportfoliocategory/{id}', "PortfolioCategoriesController@UpdateCategory")->name("updatecategory");
+        Route::get('/removeportfoliocategory/{id}', "PortfolioCategoriesController@RemoveCategory")->name("removecategory");
     });
 
     Route::get('/profile', function () {
