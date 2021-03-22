@@ -62,7 +62,7 @@ section {
     letter-spacing: 1px;
     font-weight: 700;
     margin: 0;
-    color: #4154f1;
+    color: #0cb0e6;
     text-transform: uppercase;
 }
 
@@ -285,7 +285,7 @@ section {
 }
 
 .navbar .getstarted {
-    background: #4154f1;
+    background: #133b7e;
     padding: 8px 20px;
     margin-left: 30px;
     border-radius: 4px;
@@ -502,7 +502,7 @@ section {
     border-radius: 4px;
     transition: 0.5s;
     color: #fff;
-    background: #4154f1;
+    background: #133b7e;
     box-shadow: 0px 5px 30px rgba(65, 84, 241, 0.4);
 }
 
@@ -622,7 +622,7 @@ section {
 .about h3 {
     font-size: 14px;
     font-weight: 700;
-    color: #4154f1;
+    color: #0cb0e6;
     text-transform: uppercase;
 }
 
@@ -643,7 +643,7 @@ section {
     border-radius: 4px;
     transition: 0.5s;
     color: #fff;
-    background: #4154f1;
+    background: #133b7e;
     box-shadow: 0px 5px 25px rgba(65, 84, 241, 0.3);
 }
 
@@ -1781,7 +1781,7 @@ section {
 .contact .info-box i {
     font-size: 38px;
     line-height: 0;
-    color: #4154f1;
+    color: #0cb0e6;
 }
 
 .contact .info-box h3 {
@@ -1867,7 +1867,7 @@ section {
 }
 
 .contact .php-email-form button[type="submit"] {
-    background: #4154f1;
+    background: #133b7e;
     border: 0;
     padding: 10px 30px;
     color: #fff;

@@ -34,8 +34,10 @@
                 <div class="swiper-slide">
                     <div class="box" data-aos="fade-up" data-aos-delay="200">
                         <img src="assets/img/features-3.png" class="img-fluid" alt="">
+                        <center>
                         <h3>Contact Center</h3>
                         <p>Providing efficient and effective technical support, customer service, and sales assistance, are the primary purpose of a contact center. This is a central point from which all customer interactions across various channels are managed.</p>
+                        </center>
                     </div>
                 </div>
 
