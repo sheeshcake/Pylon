@@ -58,13 +58,23 @@ class SiteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function ShowBlog($id)
     {
         $recent = Blogs::where('id', "!=", $id)->orderBy('id', 'desc')->limit('4')->get();
         $blog = Blogs::join('users', 'users.id', '=', 'blogs.user_id')->where('blogs.id', $id)->get();
         $tags = Tags::all();
         $categories = Categories::all();
         return view('landingcontent.single-blog')->with('data', ["blog" => $blog, "tags" => $tags, "categories" => $categories, "recent" => $recent]);
+    }
+
+    public function ShowPortfolio($id)
+    {
+        $recent = Blogs::where('id', "!=", $id)->orderBy('id', 'desc')->limit('4')->get();
+        $portfolio = Portfolios::where('id', $id)->get();
+        $images = PortfolioImages::where('portfolio_id', $id)->get();
+        $tags = Tags::all();
+        $categories = Categories::all();
+        return view('landingcontent.single-portfolio')->with('data', ["portfolio" => $portfolio, "images" => $images, "tags" => $tags, "categories" => $categories, "recent" => $recent]);
     }
 
     /**
@@ -106,6 +116,13 @@ class SiteController extends Controller
         $recent = Blogs::orderBy('id', 'desc')->limit('4')->get();
         $blogs = Blogs::join('users', "users.id", "=", "blogs.user_id")->orderBy('blogs.id', 'desc')->get(["blogs.id AS blog_id", "blogs.*", "users.*"]);
         return view('landingcontent.blog')->with('data', ["blogs" => $blogs, "tags" => $tags, "categories" => $categories, "recent" => $recent]);
+    }
+    public function ShowAllPortfolio(){
+        $tags = Tags::all();
+        $categories = Categories::all();
+        $recent = Blogs::orderBy('id', 'desc')->limit('4')->get();
+        $portfolios = Portfolios::all();
+        return view('landingcontent.allportfolio')->with('data', ["portfolios" => $portfolios, "tags" => $tags, "categories" => $categories, "recent" => $recent]);
     }
     public function ShowAllUserBlogs($id){
         $tags = Tags::all();
