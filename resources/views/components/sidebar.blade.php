@@ -16,14 +16,26 @@
             </li>
             <li class="sidebar-item">
                 <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/blogs" aria-expanded="false">
-                    <i class="mdi me-2 mdi-gauge"></i>
+                    <i class="mdi me-2 mdi-blogger"></i>
                     <span class="hide-menu">Blogs</span>
                 </a>
             </li>
             <li class="sidebar-item">
                 <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('portfolio') }}" aria-expanded="false">
-                    <i class="mdi me-2 mdi-table"></i>
+                    <i class="mdi me-2 mdi-briefcase"></i>
                     <span class="hide-menu">Portfolio</span>
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('profile') }}" aria-expanded="false">
+                    <i class="mdi me-2 mdi-format-list-bulleted-type"></i>
+                    <span class="hide-menu">Portfolio Categories</span>
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('profile') }}" aria-expanded="false">
+                    <i class="mdi me-2 mdi-account-multiple-plus"></i>
+                    <span class="hide-menu">Add User</span>
                 </a>
             </li>
             <li class="sidebar-item">

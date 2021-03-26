@@ -62,10 +62,14 @@ Route::group(['middleware' => ['auth']], function(){
         Route::get('/removeportfolio/{id}', 'PortfolioController@RemovePortfolio')->name('removeportfolio');
     });
 
+    //portfolio categories
+    Route::prefix('/portfoliocategoriesblog')->group(function(){
+        Route::post('/updateportfoliocategory/{id}', "PortfolioCategoriesController@UpdateCategory")->name("updatecategory");
+    });
     Route::prefix('/portfoliocategories')->group(function(){
-        Route::post('/addportfoliocategory', "CategoriesController@AddCategory")->name("addcategory");
-        Route::post('/updateportfoliocategory/{id}', "CategoriesController@UpdateCategory")->name("updatecategory");
-        Route::get('/removeportfoliocategory/{id}', "CategoriesController@RemoveCategory")->name("removecategory");
+        Route::post('/addportfoliocategory', "PortfolioCategoriesController@AddCategory")->name("addcategory");
+        Route::post('/updateportfoliocategory/{id}', "PortfolioCategoriesController@UpdateCategory")->name("updatecategory");
+        Route::get('/removeportfoliocategory/{id}', "PortfolioCategoriesController@RemoveCategory")->name("removecategory");
     });
 
     Route::get('/profile', function () {
@@ -93,9 +97,11 @@ Route::post('/login', 'LoginController@DoLogin')->name('login');
 
 Route::group(['prefix' => '/'], function () {
     Route::get('/', "SiteController@index");
-    Route::get('/pylonblog/{id}', "SiteController@show");
+    Route::get('/pylonblog/{id}', "SiteController@ShowBlog");
+    Route::get('/pylonportfolio/{id}', "SiteController@ShowPortfolio");
     Route::get('/team/{id}', "SiteController@ShowAllUserBlogs");
     Route::get('/pylonblog', "SiteController@ShowAllBlog")->name('pylonblog');
+    Route::get('/pylonportfolio', "SiteController@ShowAllPortfolio")->name('pylonportfolio');
 });
 
 

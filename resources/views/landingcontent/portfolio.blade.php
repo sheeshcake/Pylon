@@ -28,7 +28,7 @@
                         <p>{{ $portfolio->category_name }}</p>
                         <div class="portfolio-links">
                         <a href="{{ url('/') }}/assets/img/portfolio/{{ $portfolio->image_name }}" data-gallery="portfolioGallery" class="portfokio-lightbox" title="{{ $portfolio->portfolio_name }}"><i class="bi bi-plus"></i></a>
-                        <a href="portfolio-details.html" title="More Details"><i class="bi bi-link"></i></a>
+                        <a href="/pylonportfolio/{{ $portfolio->portfolio_id }}" title="More Details"><i class="bi bi-link"></i></a>
                         </div>
                     </div>
                 </div>
