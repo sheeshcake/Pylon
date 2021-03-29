@@ -608,13 +608,14 @@ section {
 --------------------------------------------------------------*/
 
 .about {
-    background-color: #2494ce;
+    background-color: #7bd3ff31;
     padding-top: auto;
     padding-bottom: auto;
     height: 100vh;
 }
 
 .about .content {
+    box-shadow: 0px 5px 25px rgba(65, 84, 241, 0.3);
     background-color: #ffffff;
     padding: 40px;
 }
@@ -1487,7 +1488,7 @@ section {
     padding: 30px;
     margin: 40px 30px;
     /* box-shadow: 0px 0 20px rgba(1, 41, 112, 0.1); */
-    background: #fff;
+    background: #daf2fc;
     min-height: 320px;
     display: flex;
     flex-direction: column;

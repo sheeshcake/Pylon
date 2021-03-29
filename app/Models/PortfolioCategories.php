@@ -9,6 +9,7 @@ class PortfolioCategories extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'portfolio_id',
+        'category_name',
+        'category_content'
     ];
 }

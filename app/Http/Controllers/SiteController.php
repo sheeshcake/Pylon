@@ -64,7 +64,8 @@ class SiteController extends Controller
         $blog = Blogs::join('users', 'users.id', '=', 'blogs.user_id')->where('blogs.id', $id)->get();
         $tags = Tags::all();
         $categories = Categories::all();
-        return view('landingcontent.single-blog')->with('data', ["blog" => $blog, "tags" => $tags, "categories" => $categories, "recent" => $recent]);
+        $portfoliocategories = PortfolioCategories::all();
+        return view('landingcontent.single-blog')->with('data', ["blog" => $blog, "tags" => $tags, "categories" => $categories, "recent" => $recent, "portfoliocategories" => $portfoliocategories]);
     }
 
     public function ShowPortfolio($id)
@@ -74,7 +75,8 @@ class SiteController extends Controller
         $images = PortfolioImages::where('portfolio_id', $id)->get();
         $tags = Tags::all();
         $categories = Categories::all();
-        return view('landingcontent.single-portfolio')->with('data', ["portfolio" => $portfolio, "images" => $images, "tags" => $tags, "categories" => $categories, "recent" => $recent]);
+        $portfoliocategories = PortfolioCategories::all();
+        return view('landingcontent.single-portfolio')->with('data', ["portfolio" => $portfolio, "images" => $images, "tags" => $tags, "categories" => $categories, "recent" => $recent, "portfoliocategories" => $portfoliocategories]);
     }
 
     /**
@@ -114,21 +116,37 @@ class SiteController extends Controller
         $tags = Tags::all();
         $categories = Categories::all();
         $recent = Blogs::orderBy('id', 'desc')->limit('4')->get();
+        $portfoliocategories = PortfolioCategories::all();
         $blogs = Blogs::join('users', "users.id", "=", "blogs.user_id")->orderBy('blogs.id', 'desc')->get(["blogs.id AS blog_id", "blogs.*", "users.*"]);
-        return view('landingcontent.blog')->with('data', ["blogs" => $blogs, "tags" => $tags, "categories" => $categories, "recent" => $recent]);
+        return view('landingcontent.blog')->with('data', ["blogs" => $blogs, "tags" => $tags, "categories" => $categories, "recent" => $recent, "portfoliocategories" => $portfoliocategories]);
     }
     public function ShowAllPortfolio(){
         $tags = Tags::all();
         $categories = Categories::all();
         $recent = Blogs::orderBy('id', 'desc')->limit('4')->get();
-        $portfolios = Portfolios::all();
-        return view('landingcontent.allportfolio')->with('data', ["portfolios" => $portfolios, "tags" => $tags, "categories" => $categories, "recent" => $recent]);
+        $portfolios = Portfolios::join("portfolio_images", "portfolio_images.portfolio_id", "=", "portfolios.id")->groupBy("portfolios.id")->get();
+        $portfoliocategories = PortfolioCategories::all();
+        return view('landingcontent.allportfolio')->with('data', ["portfolios" => $portfolios, "tags" => $tags, "categories" => $categories, "recent" => $recent, "portfoliocategories" => $portfoliocategories]);
     }
     public function ShowAllUserBlogs($id){
         $tags = Tags::all();
         $categories = Categories::all();
         $recent = Blogs::orderBy('id', 'desc')->limit('4')->get();
+        $portfoliocategories = PortfolioCategories::all();
         $blogs = Blogs::join('users', "users.id", "=", "blogs.user_id")->where('users.id', "=", $id)->orderBy('blogs.id', 'desc')->get(["blogs.id AS blog_id", "blogs.*", "users.*"]);
-        return view('landingcontent.blog')->with('data', ["blogs" => $blogs, "tags" => $tags, "categories" => $categories, "recent" => $recent]);
+        return view('landingcontent.blog')->with('data', ["blogs" => $blogs, "tags" => $tags, "categories" => $categories, "recent" => $recent, "portfoliocategories" => $portfoliocategories]);
     }
+
+    public function ShowServices($id){
+        $services = PortfolioCategories::where("id", "=", $id)->get();
+        $portfolios = Portfolios::select(["portfolios.id as portfolio_id", "portfolios.*", "portfolio_categories.*", "portfolio_images.*"])
+                                ->join("portfolio_images", "portfolio_images.portfolio_id", "=", "portfolios.id")
+                                ->join("portfolio_categories", "portfolio_categories.id", "=", "portfolios.category_id")
+                                ->where("portfolios.category_id", "=", $id)
+                                ->groupBy("portfolios.id")
+                                ->get();
+        $portfoliocategories = PortfolioCategories::all();
+        return view('landingcontent.single-services')->with('data', ["services" => $services, "portfolios" => $portfolios, "portfoliocategories" => $portfoliocategories]);
+    }
+
 }

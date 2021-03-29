@@ -8,6 +8,7 @@ use App\Http\Controllers\BlogsController;
 use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\PortfolioCategoriesController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -63,13 +64,13 @@ Route::group(['middleware' => ['auth']], function(){
     });
 
     //portfolio categories
-    Route::prefix('/portfoliocategoriesblog')->group(function(){
-        Route::post('/updateportfoliocategory/{id}', "PortfolioCategoriesController@UpdateCategory")->name("updatecategory");
-    });
-    Route::prefix('/portfoliocategories')->group(function(){
-        Route::post('/addportfoliocategory', "PortfolioCategoriesController@AddCategory")->name("addcategory");
-        Route::post('/updateportfoliocategory/{id}', "PortfolioCategoriesController@UpdateCategory")->name("updatecategory");
-        Route::get('/removeportfoliocategory/{id}', "PortfolioCategoriesController@RemoveCategory")->name("removecategory");
+    Route::prefix('/services')->group(function(){
+        Route::get("/", "PortfolioCategoriesController@ShowAllCategory")->name('services');
+        Route::get("/newservices", "PortfolioCategoriesController@ShowAddCategory")->name('newservices');
+        Route::get('/viewservices/{id}', 'PortfolioCategoriesController@ShowCategory')->name('viewservices');
+        Route::post('/addservices', "PortfolioCategoriesController@AddCategory")->name("addservices");
+        Route::post('/updateservices', "PortfolioCategoriesController@UpdateCategory")->name("updateservices");
+        Route::get('/removeservices/{id}', "PortfolioCategoriesController@RemoveCategory")->name("removeservices");
     });
 
     Route::get('/profile', function () {
@@ -99,9 +100,11 @@ Route::group(['prefix' => '/'], function () {
     Route::get('/', "SiteController@index");
     Route::get('/pylonblog/{id}', "SiteController@ShowBlog");
     Route::get('/pylonportfolio/{id}', "SiteController@ShowPortfolio");
+    Route::get('/pylonservices/{id}', "SiteController@ShowServices");
     Route::get('/team/{id}', "SiteController@ShowAllUserBlogs");
     Route::get('/pylonblog', "SiteController@ShowAllBlog")->name('pylonblog');
     Route::get('/pylonportfolio', "SiteController@ShowAllPortfolio")->name('pylonportfolio');
+    Route::get('/pylonservices', "SiteController@ShowAllServices")->name('pylonservices');
 });
 
 

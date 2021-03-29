@@ -91,13 +91,6 @@
 
 @section('recent')
 
-@foreach($data["recent"] as $recent)    
-    <div class="post-item clearfix">
-        <img src="{{ url('/') }}/assets/img/blog/{{ $recent->blog_image }}" alt="">
-        <h4><a href="{{ route('pylonblog') }}/{{ $recent->id }}">{{ $recent->blog_title }}</a></h4>
-        <time>{{ date("F jS, Y", strtotime($data['blog'][0]->created_at)) }}</time>
-    </div>
-@endforeach
 
 @endsection
 

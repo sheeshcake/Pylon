@@ -61,10 +61,9 @@
                 <li><a class="nav-link scrollto" href="#about">About</a></li>
                 <li class="dropdown"><a href="#"><span>Services</span> <i class="bi bi-chevron-down"></i></a>
                     <ul>
-                        <li><a href="#">Social Media Marketing</a></li>
-                        <li><a href="#">Branding Strategy</a></li>
-                        <li><a href="#">Website Development</a></li>
-                        <li><a href="#">Contact Center</a></li>
+                    @foreach($data["portfoliocategories"] as $category)
+                        <li><a href="/pylonservices/{{ $category->id }}">{{ $category->category_name }}</a></li>
+                    @endforeach
                     </ul>
                 </li>
                 <li><a class="nav-link scrollto" href="#portfolio">Portfolio</a></li>

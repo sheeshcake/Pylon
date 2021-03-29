@@ -10,15 +10,35 @@ class PortfolioCategoriesController extends Controller
     public function AddCategory(Request $request){
         $categories = new PortfolioCategories();
         $categories->category_name = $request["category_name"];
+        $categories->category_content = $request["category_content"];
         $categories->save();
-        return back()->with("success", "Category Added!");
+        $id = $categories->id;
+        return redirect("services/viewservices/" . $id)->with('success', 'Blog Saved!');
     }
     public function UpdateCategory(Request $request){
-        PortfolioCategories::where("id", "=", $request->id)->update(["category_name" => $request->category_name]);
-        echo "Category Updated!";
+        PortfolioCategories::where("id", "=", $request->id)->update(["category_name" => $request->category_name, "category_content" => $request->category_content]);
+        return redirect("services/viewservices/" . $request->id)->with('success', 'Blog Updated!');
     }
     public function RemoveCategory(Request $request){
         PortfolioCategories::where("id", "=", $request->id)->delete();
-        echo "Category Deleted!";
+        return redirect("services")->with('success', 'Blog Deleted!');
     }
+    public function ShowAllCategoryBlog(){
+        $categoryblog = PortfolioCategoriesBlog::join("portfolio_categories", "portfolio_categories.id", "=", "portfolio_categories_blog.portfoliocategories_id")->get();
+        // return view()
+    }
+    public function ShowAllCategory(){
+        $services = PortfolioCategories::all();
+        return view("content.category-blog")->with("data", ["services" => $services]);
+    }
+
+    public function ShowAddCategory(){
+        return view("content.new-category-blog");
+    }
+
+    public function ShowCategory(Request $request){
+        $services = PortfolioCategories::where("id", "=", $request->id)->get();
+        return view("content.view-category-blog")->with("data", ["services" => $services]);
+    }
+
 }

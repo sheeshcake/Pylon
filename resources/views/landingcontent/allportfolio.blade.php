@@ -1,7 +1,7 @@
-@extends('blog-layout')
+@extends('portfolio-layout')
 
 @section('title')
-    Blog
+Portfolios
 @endsection
 
 @section('breadcrumbs')
@@ -12,36 +12,36 @@
   <li><a href="/">Home</a></li>
   <li><a href="{{ route('pylonblog') }}">Portfolio</a></li>
 </ol>
-<h2>Blogs</h2>
+<h2>Portfolios</h2>
 
 </div>
 
 @endsection
 
 @section('entry')
-    @foreach ($data['blogs'] as $blog)
+    @foreach ($data['portfolios'] as $portfolio)
         <article class="entry">
 
             <div class="entry-img">
-            <img src="{{ url('/') }}/assets/img/blog/{{ $blog->blog_image }}" alt="" class="img-fluid">
+            <img src="{{ url('/') }}/assets/img/portfolio/{{ $portfolio->image_name }}" alt="" class="img-fluid">
             </div>
 
             <h2 class="entry-title">
-            <a href="{{ route('pylonblog') }}/{{ $blog->blog_id }}">{{ $blog->blog_title }}</a>
+            <a href="{{ route('pylonportfolio') }}/{{ $portfolio->portfolio_id }}">{{ $portfolio->portfolio_name }}</a>
             </h2>
 
             <div class="entry-meta">
             <ul>
-                <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="blog-single.html">{{ $blog->f_name . " " . $blog->l_name }}</a></li>
-                <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="blog-single.html"><time>{{ date("F jS, Y", strtotime($blog->created_at)) }}</time></a></li>
+                <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="blog-single.html">{{ $portfolio->f_name . " " . $portfolio->l_name }}</a></li>
+                <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="blog-single.html"><time>{{ date("F jS, Y", strtotime($portfolio->created_at)) }}</time></a></li>
                 <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="blog-single.html">12 Comments</a></li>
             </ul>
             </div>
 
             <div class="entry-content">
-            {!! strip_tags(Str::limit($blog->blog_content, 300, $end='...')) !!}
+            {!! strip_tags(Str::limit($portfolio->portfolio_content, 300, $end='...')) !!}
             <div class="read-more">
-                <a href="{{ route('pylonblog') }}/{{ $blog->blog_id }}">Read More</a>
+                <a href="{{ route('pylonportfolio') }}/{{ $portfolio->portfolio_id }}">Read More</a>
             </div>
             </div>
 

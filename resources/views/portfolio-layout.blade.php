@@ -68,13 +68,12 @@
             <li><a class="nav-link scrollto" href="/#about">About</a></li>
             <li class="dropdown"><a href="#"><span>Services</span> <i class="bi bi-chevron-down"></i></a>
                 <ul>
-                    <li><a href="#">Social Media Marketing</a></li>
-                    <li><a href="#">Branding Strategy</a></li>
-                    <li><a href="#">Website Development</a></li>
-                    <li><a href="#">Contact Center</a></li>
+                  @foreach($data["portfoliocategories"] as $category)
+                      <li><a href="/pylonservices/{{ $category->id }}">{{ $category->category_name }}</a></li>
+                  @endforeach
                 </ul>
             </li>
-            <li><a class="nav-link scrollto" href="/blogs">Blogs</a></li>
+            <li><a class="nav-link scrollto" href="/pylonblog">Blogs</a></li>
             <li><a class="nav-link scrollto" href="/#team">Team</a></li>
             <!-- <li><a href="blog.html">Blog</a></li> -->
             <li><a class="nav-link scrollto" href="/#contact">Contact</a></li>
@@ -157,13 +156,11 @@
           </div>
 
           <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
-            <h4>Contact Us</h4>
-            <p>
-              A108 Adam Street <br>
-              New York, NY 535022<br>
-              United States <br><br>
-              <strong>Phone:</strong> +1 5589 55488 55<br>
-              <strong>Email:</strong> info@example.com<br>
+          <h4>Contact Us</h4>
+            <p>Benito Labao St. Roosevelt,<br>
+            Brgy. Saray-Tibanga 9200 Iligan City <br>
+            <strong>Phone:</strong> +98(897)67 43 67<br>
+            <strong>Email:</strong> info@example.com<br>
             </p>
 
           </div>

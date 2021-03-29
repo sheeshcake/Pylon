@@ -35,6 +35,9 @@
             </div>
             @endforeach
         </div>
+        <center>
+            <a href="{{ route('pylonportfolio') }}" class="btn btn-primary">Show All</a>
+        </center>
 
         </div>
 

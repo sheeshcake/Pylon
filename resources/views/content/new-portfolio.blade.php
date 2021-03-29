@@ -14,7 +14,7 @@
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="/blogs">Portfolio</a></li>
+                                    <li class="breadcrumb-item"><a href="/portfolios">Portfolio</a></li>
                                     <li class="breadcrumb-item portfolio_name">New Portfolio</li>
                                 </ol>
                             </nav>
@@ -88,7 +88,7 @@
 <script src="{{ url('/') }}/js/waves.js"></script>
 <script src="{{ url('/') }}/js/sidebarmenu.js"></script>
 <script src="{{ url('/') }}/js/custom.js"></script>
-<script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
+<script src="https://cdn.ckeditor.com/4.16.0/full/ckeditor.js"></script>
 <script>
     CKEDITOR.replace('content_input');
     $("#title_input").on('input', function(){

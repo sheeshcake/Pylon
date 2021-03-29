@@ -27,7 +27,7 @@
                     <div class="alert alert-success">{!! \Session::get('success') !!}</div>
                 @endif
                 <div class="row">
-                    <div class="col-lg-10 col-md-8">
+                    <div class="col-lg-12 col-md-12">
                         <a href="{{ route('newportfolio') }}" class="btn btn-success mb-3">Add New Portfolio</a>
                         @foreach ($data['portfolios'] as $portfolio)
                             <div class="card">
@@ -44,42 +44,6 @@
                                 </div>
                             </div>
                         @endforeach
-                    </div>
-                    <div class="col-lg-2 col md-4">
-                        <div class="card">
-                            <div class="card-header">
-                                <h3>Categories</h3>
-                            </div>
-                            <div class="card-body">
-                                <div id="category-alert" style="display: none"></div>
-                                @foreach($data["categories"] as $category)
-                                    <div class="input-group">
-                                        <input type="text" id="input_cat_{{ $category->id }}" class="form-control" value="{{ $category->category_name }}">
-                                        <div class="input-group-prepend input-group-append">
-                                            <button class="btn btn-outline-success updatecat" value="{{ $category->id }}">
-                                                <i class="fa fa-refresh" aria-hidden="true"></i>
-                                            </button>
-                                        </div>
-                                        <div class="input-group-append">
-                                            <button class="btn btn-outline-danger deletecat" value="{{ $category->id }}">
-                                                <i class="fa fa-trash" aria-hidden="true"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                @endforeach
-                                <hr>
-                                <form action="portfoliocategories/addportfoliocategory" method="post">
-                                    @csrf
-                                    <label for="">Add Category</label>
-                                    <div class="input-group">
-                                        <input type="text" name="category_name" class="form-control" placeholder="Category Name">
-                                        <div class="input-group-append">
-                                            <input type="submit" class="btn btn-outline-success" value="Add">
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
