@@ -57,8 +57,8 @@
             <h4>Contact Us</h4>
             <p>Benito Labao St. Roosevelt,<br>
             Brgy. Saray-Tibanga 9200 Iligan City <br>
-            <strong>Phone:</strong> +98(897)67 43 67<br>
-            <strong>Email:</strong> info@example.com<br>
+            <strong>Tel No:</strong> (063) 228-4272 or (063) 302 9758<br>
+            <strong>Email:</strong> pylonglobal@gmail.com<br>
             </p>
 
         </div>

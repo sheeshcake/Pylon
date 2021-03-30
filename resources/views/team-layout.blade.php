@@ -74,7 +74,7 @@
                 </ul>
             </li>
             <li><a class="nav-link scrollto" href="/pylonblog">Blogs</a></li>
-            <li><a class="nav-link scrollto" href="/#team">Team</a></li>
+            <li><a class="nav-link scrollto" href="/pylonportfolio">Portfolio</a></li>
             <!-- <li><a href="blog.html">Blog</a></li> -->
             <li><a class="nav-link scrollto" href="/#contact">Contact</a></li>
             <li><a class="getstarted scrollto" href="/#about">Get Started</a></li>
@@ -86,29 +86,21 @@
     </header><!-- End Header -->
 
   <main id="main">
-
     <!-- ======= Breadcrumbs ======= -->
     <section class="breadcrumbs">
         @yield('breadcrumbs')
     </section><!-- End Breadcrumbs -->
 
+
     <!-- ======= Blog Single Section ======= -->
-    <section id="blog" class="blog">
+    <section id="team" class="team">
       <div class="container" data-aos="fade-up">
-
-        <div class="row">
-          
-            @yield('gallery')
-          
-          
-
-
-            @yield('entry')
-
-
-
-        </div>
-
+        <div class="row justify-content-center my-5">
+            <center>
+                <h2>Meet Our Awesome Team</h2>
+            </center>
+            
+        @yield('entry')
       </div>
     </section><!-- End Blog Single Section -->
 

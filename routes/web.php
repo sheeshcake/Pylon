@@ -72,9 +72,19 @@ Route::group(['middleware' => ['auth']], function(){
         Route::get('/removeservices/{id}', "PortfolioCategoriesController@RemoveCategory")->name("removeservices");
     });
 
-    Route::get('/profile', function () {
-        echo "hello";
-    })->name('profile');
+    Route::prefix("/accounts")->group(function(){
+        Route::get("/", "AdminController@ShowAllUsers")->name("accounts");
+        Route::get("/newuser", "AdminController@ShowAddUser")->name("newuser");
+        Route::get("/removeuser/{id}", "AdminController@RemoveUser")->name("removeuser");
+        Route::post("/updateuser", "AdminController@UpdateUser")->name("updateuser");
+        Route::post("/adduser", "AdminController@AddUser")->name("adduser");
+        Route::get("/viewuser/{id}", "AdminController@ShowUser")->name("viewuser");
+    });
+
+    Route::prefix("/profile")->group(function(){
+        Route::get("/", "AdminController@ShowProfile")->name("profile");
+        Route::post("/updateprofile", "AdminController@UpdateUser")->name("updateprofile");
+    });
 });
 
 //logout
@@ -104,6 +114,7 @@ Route::group(['prefix' => '/'], function () {
     Route::get('/pylonblog', "SiteController@ShowAllBlog")->name('pylonblog');
     Route::get('/pylonportfolio', "SiteController@ShowAllPortfolio")->name('pylonportfolio');
     Route::get('/pylonservices', "SiteController@ShowAllServices")->name('pylonservices');
+    Route::get('/pylonteam', "SiteController@ShowAllPeople")->name('pylonteam');
 });
 
 

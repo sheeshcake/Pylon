@@ -28,10 +28,11 @@ class SiteController extends Controller
                                 ->get();
         $portfoliocategories = PortfolioCategories::all();
         $blogs = Blogs::orderBy('id', 'desc')->limit('3')->get();
+        $users = User::orderBy('id', 'asc')->limit('4')->get();
         $sitelog = new SiteLogs();
         $sitelog->action = "visit";
         $sitelog->save();
-        return view('welcome')->with('data', ['blogs' => $blogs, "portfolios" => $portfolios, "portfoliocategories" => $portfoliocategories]);
+        return view('welcome')->with('data', ['blogs' => $blogs, "portfolios" => $portfolios, "portfoliocategories" => $portfoliocategories, "users" => $users]);
     }
 
     /**
@@ -150,6 +151,13 @@ class SiteController extends Controller
                                 ->get();
         $portfoliocategories = PortfolioCategories::all();
         return view('landingcontent.single-services')->with('data', ["services" => $services, "portfolios" => $portfolios, "portfoliocategories" => $portfoliocategories]);
+    }
+
+    public function ShowAllPeople(){
+        $users = User::all();
+        $portfoliocategories = PortfolioCategories::all();
+        return view('landingcontent.single-team')
+                ->with("data", ["users" => $users, "portfoliocategories" => $portfoliocategories]);
     }
 
 }

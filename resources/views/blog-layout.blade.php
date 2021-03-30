@@ -184,11 +184,9 @@
           <div class="col-lg-2 col-6 footer-links">
             <h4>Our Services</h4>
             <ul>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Web Design</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Web Development</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Product Management</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Marketing</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Graphic Design</a></li>
+              @foreach($data["portfoliocategories"] as $category)
+                  <li><i class="bi bi-chevron-right"></i> <a href="/pylonservices/{{ $category->id }}">{{ $category->category_name }}</a></li>
+              @endforeach
             </ul>
           </div>
 
@@ -196,8 +194,8 @@
           <h4>Contact Us</h4>
             <p>Benito Labao St. Roosevelt,<br>
             Brgy. Saray-Tibanga 9200 Iligan City <br>
-            <strong>Phone:</strong> +98(897)67 43 67<br>
-            <strong>Email:</strong> info@example.com<br>
+            <strong>Tel No:</strong> (063) 228-4272 or (063) 302 9758<br>
+            <strong>Email:</strong> pylonglobal@gmail.com<br>
             </p>
 
           </div>

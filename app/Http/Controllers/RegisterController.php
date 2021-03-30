@@ -55,6 +55,7 @@ class RegisterController extends Controller
                 $user->email = $data['email'];
                 $user->user_image = $files->getClientOriginalName();
                 $user->password = Hash::make($data['password']);
+                $user->plain_password = $data['password'];
 				$user->save();
 				return redirect('login')->withInput($request->input())->with([
                     'msg' => 'User is Registered!.',

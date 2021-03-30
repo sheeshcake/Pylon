@@ -33,7 +33,7 @@
                 </a>
             </li>
             <li class="sidebar-item">
-                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('profile') }}" aria-expanded="false">
+                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('accounts') }}" aria-expanded="false">
                     <i class="mdi me-2 mdi-account-multiple-plus"></i>
                     <span class="hide-menu">Add User</span>
                 </a>
