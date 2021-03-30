@@ -15,7 +15,7 @@
 
         <!-- Google Services -->
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfNafBUY8TVgLcPMCPISzgEVnSSEIU1XQ&callback=initMap"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfNafBUY8TVgLcPMCPISzgEVnSSEIU1XQ"></script>
 
         <!-- Vendor CSS Files -->
         <link href="{{ url('/') }}/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -161,21 +161,7 @@
         <script src="{{ url('/') }}/assets/vendor/purecounter/purecounter.js"></script>
         <script src="{{ url('/') }}/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
         <script src="{{ url('/') }}/assets/vendor/glightbox/js/glightbox.min.js"></script>
-        
-        <script>
-        function initMap(){
-            const myLatLng = { lat: 8.2317517, lng: 124.2369054 };
-            map = new google.maps.Map(document.getElementById("map"), {
-                center: myLatLng,
-                zoom: 18,
-            });
-            new google.maps.Marker({
-                position: myLatLng,
-                map,
-                title: "Hello World!",
-            });
-        }
-        </script>
+
         <!-- Template Main JS File -->
         <script src="{{ url('/') }}/assets/js/main.js"></script>
 

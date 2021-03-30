@@ -13,15 +13,15 @@ class PortfolioCategoriesController extends Controller
         $categories->category_content = $request["category_content"];
         $categories->save();
         $id = $categories->id;
-        return redirect("services/viewservices/" . $id)->with('success', 'Blog Saved!');
+        return redirect("services/viewservices/" . $id)->with('success', 'Services Saved!');
     }
     public function UpdateCategory(Request $request){
         PortfolioCategories::where("id", "=", $request->id)->update(["category_name" => $request->category_name, "category_content" => $request->category_content]);
-        return redirect("services/viewservices/" . $request->id)->with('success', 'Blog Updated!');
+        return redirect("services/viewservices/" . $request->id)->with('success', 'Services Updated!');
     }
     public function RemoveCategory(Request $request){
         PortfolioCategories::where("id", "=", $request->id)->delete();
-        return redirect("services")->with('success', 'Blog Deleted!');
+        return redirect("services")->with('success', 'Services Deleted!');
     }
     public function ShowAllCategoryBlog(){
         $categoryblog = PortfolioCategoriesBlog::join("portfolio_categories", "portfolio_categories.id", "=", "portfolio_categories_blog.portfoliocategories_id")->get();

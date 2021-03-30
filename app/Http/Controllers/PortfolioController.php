@@ -42,12 +42,12 @@ class PortfolioController extends Controller
                 $images->save();
             }
         }
-        return redirect('/portfolio/viewportfolio/' . $data)->with('success', 'Blog Saved!');
+        return redirect('/portfolio/viewportfolio/' . $data)->with('success', 'Portfolio Saved!');
     }
 
     public function UpdatePortfolio(){
 
-
+        return redirect('/portfolio/viewportfolio/' . $data)->with('success', 'An Error Occured!');
     }
 
     public function RemovePortfolio(Request $request){

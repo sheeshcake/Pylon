@@ -6,6 +6,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\BlogsController;
 use App\Http\Controllers\PortfolioController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\PortfolioCategoriesController;
@@ -26,9 +27,7 @@ use App\Http\Controllers\PortfolioCategoriesController;
 
 Route::group(['middleware' => ['auth']], function(){
     //dashboard
-    Route::get('/dashboard', function () {
-        return view('content.dashboard');
-    })->name('dashboard');
+    Route::get('/dashboard', "AdminController@ShowDashboard")->name('dashboard');
 
     Route::prefix('/blogs')->group(function(){
         //blogs

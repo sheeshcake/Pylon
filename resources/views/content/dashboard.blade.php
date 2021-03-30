@@ -12,7 +12,21 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                This is some text within a card block.
+                                <h1>Site Visits: {{ $data["sitelog"] }}</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h1>Site Blogs: {{ $data["blogcount"] }}</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h1>Portfolio Counts: {{ $data["portofliocount"] }}</h1>
                             </div>
                         </div>
                     </div>

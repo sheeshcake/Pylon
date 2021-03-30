@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePortfolioCategoriesTable extends Migration
+class CreateSiteLogsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreatePortfolioCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('portfolio_categories', function (Blueprint $table) {
+        Schema::create('site_logs', function (Blueprint $table) {
             $table->id();
-            $table->text("category_name");
-            $table->longText("category_content");
+            $table->string("action");
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ class CreatePortfolioCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('portfolio_categories');
+        Schema::dropIfExists('site_logs');
     }
 }

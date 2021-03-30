@@ -29,7 +29,7 @@
                 <form enctype="multipart/form-data" action="{{ route('updateservices') }}" method="POST">
                     @csrf
                     <div class="row">
-                        <div class="col-lg-10 col-md-8">
+                        <div class="col-lg-12 col-md-12">
                             <input type="text" hidden value="{{ $data['services'][0]->id }}" name="id">
                             <div class="card">
                                 <div class="card-header">

@@ -10,6 +10,7 @@ use App\Models\Categories;
 use App\Models\Portfolios;
 use App\Models\PortfolioCategories;
 use App\Models\PortfolioImages;
+use App\Models\SiteLogs;
 
 class SiteController extends Controller
 {
@@ -27,7 +28,9 @@ class SiteController extends Controller
                                 ->get();
         $portfoliocategories = PortfolioCategories::all();
         $blogs = Blogs::orderBy('id', 'desc')->limit('3')->get();
-        // dd($portfolios);
+        $sitelog = new SiteLogs();
+        $sitelog->action = "visit";
+        $sitelog->save();
         return view('welcome')->with('data', ['blogs' => $blogs, "portfolios" => $portfolios, "portfoliocategories" => $portfoliocategories]);
     }
 

@@ -5,7 +5,17 @@
 * License: https://bootstrapmade.com/license/
 */
 $(document).ready(function(){
-
+    const myLatLng = { lat: 8.2317517, lng: 124.2369054 };
+    map = new google.maps.Map(document.getElementById("map"), {
+        center: myLatLng,
+        zoom: 19,
+        mapTypeId: 'hybrid'
+    });
+    new google.maps.Marker({
+        position: myLatLng,
+        map,
+        title: "Here we are!",
+    });
 });
 (function() {
   "use strict";
@@ -318,3 +328,4 @@ $(document).ready(function(){
   });
 
 })();
+
