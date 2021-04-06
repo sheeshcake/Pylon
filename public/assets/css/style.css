@@ -89,7 +89,7 @@ section {
 
 .breadcrumbs {
     padding: 15px 0;
-    background: #012970;
+    background: #133b7e;
     min-height: 40px;
     margin-top: 93px;
     color: #fff;
@@ -267,7 +267,7 @@ section {
     font-family: "Nunito", sans-serif;
     font-size: 16px;
     font-weight: 700;
-    color: #013289;
+    color: #133b7e;
     white-space: nowrap;
     transition: 0.3s;
 }
@@ -281,7 +281,7 @@ section {
 .navbar a:hover,
 .navbar .active,
 .navbar li:hover>a {
-    color: #4154f1;
+    color: #0fb1e6;
 }
 
 .navbar .getstarted {
@@ -807,7 +807,7 @@ section {
 --------------------------------------------------------------*/
 
 #features {
-    background: url("../img/Background1.png");
+    background: url("../img/Background3.png");
     background-size: cover;
     background-position: center;
 }
@@ -1573,7 +1573,10 @@ section {
 --------------------------------------------------------------*/
 
 .team {
-    background: #fff;
+    background: url("../img/Background1.png");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
     padding: 60px 0;
 }
 
@@ -2310,7 +2313,7 @@ section {
     font-size: 16px;
     padding: 0 15px;
     margin: -1px;
-    background: #4154f1;
+    background: #133b7e;
     color: #fff;
     transition: 0.3s;
     border-radius: 0 4px 4px 0;
