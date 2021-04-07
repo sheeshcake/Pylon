@@ -30,7 +30,7 @@
                     @csrf
                     <div class="row">
                         <div class="col-lg-12 col-md-12">
-                            <input type="text" hidden value="{{ $data['user'][0]->id }}" name="portoflio_id">
+                            <input type="text" hidden value="{{ $data['user'][0]->id }}" name="id">
                             <div class="card">
                                 <div class="card-header">
                                     <h3>{{ $data['user'][0]->f_name . " " . $data['user'][0]->l_name }}</h3>
@@ -90,7 +90,7 @@
                                         </div> 
                                     </div>
                                     <div class="form-group">
-                                        <input type="file" class="form-control-file" name="portfolio_image[]" id="image_input" required multiple>
+                                        <input type="file" class="form-control-file" name="user_image" id="image_input" required multiple>
                                         <label class="custom-file-label" for="image_input">User Image</label>
                                     </div>
                                     <input type="submit" class="btn btn-success" value="Save"> 

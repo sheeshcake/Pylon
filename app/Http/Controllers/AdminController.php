@@ -72,8 +72,8 @@ class AdminController extends Controller
         }
         $plain_password = $request->password;
         $request->password = Hash::make($request->password);
-        Blogs::where('id', $request->blog_id)->update(request()->except(['_token', 'user_id', "user_image"]) + ['user_role' => "employee", 'user_image' => $files->getClientOriginalName(), "plain_password" => $plain_password]);
-        return redirect("/viewuser/" . $request->id)->with("success", "User Updated!");
+        User::where('id', $request->id)->update(request()->except(['_token', "user_image"]) + ['user_image' => $files->getClientOriginalName(), "plain_password" => $plain_password]);
+        return redirect("accounts/viewuser/" . $request->id)->with("success", "User Updated!");
     }
 
     public function ShowProfile(){

@@ -81,6 +81,20 @@ Route::group(['middleware' => ['auth']], function(){
         Route::get("/viewuser/{id}", "AdminController@ShowUser")->name("viewuser");
     });
 
+    Route::prefix("/timetrack")->group(function(){
+        Route::get("/", "TimeTrackVAController@ShowRooms")->name('timetrack');
+        Route::get("/room/{id}", "TimeTrackVAController@JoinRoom")->name('joinva');
+        Route::get("/leave/{id}", "TimeTrackVAController@LeaveRoom")->name('leave');
+    });
+
+    Route::prefix("/rooms")->group(function(){
+        Route::get("/", "TimeTrackClientController@ShowRooms")->name("rooms");
+        Route::get("/newroom", "TimeTrackClientController@ShowNewRoom")->name("newroom");
+        Route::post("/addroom", "TimeTrackClientController@AddRoom")->name("addroom");
+        Route::post("/removeroom", "TimeTrackClientController@RemoveRoom")->name("removeroom");
+        Route::get("/room/{id}", "TimeTrackClientController@JoinRoom")->name("joinclient");
+    });
+
     Route::prefix("/profile")->group(function(){
         Route::get("/", "AdminController@ShowProfile")->name("profile");
         Route::post("/updateprofile", "AdminController@UpdateUser")->name("updateprofile");

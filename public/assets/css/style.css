@@ -2102,7 +2102,10 @@ section {
 }
 
 .blog .blog-author img {
-    width: 120px;
+    width: 110px;
+    height: 110px;
+    object-fit: cover;
+    object-position: top;
     margin-right: 20px;
 }
 

@@ -20,6 +20,7 @@
         display: flex;
     }
 </style>
+
 <div class="create justify-content-center align-items-center">
     <div class="col-md-4">
         <div class="card p-5" style="margin-bottom: 20%; border-color: #0cb0e6; border-width: thick;">
