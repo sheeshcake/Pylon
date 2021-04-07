@@ -12,12 +12,20 @@
 @endsection
 
 @section('content')
-<div class="row justify-content-center align-items-center mt-5">
+<style>
+    .create{
+        background-image: url("{{ url('/') }}/assets/img/LoginBackground.jpg");
+        height: 100vh;
+        background-repeat: no-repeat;
+        display: flex;
+    }
+</style>
+<div class="create justify-content-center align-items-center">
     <div class="col-md-4">
-        <div class="card p-5">
+        <div class="card p-5" style="margin-bottom: 20%; border-color: #0cb0e6; border-width: thick;">
             <center>
-            <h2>Create Account</h2>
-            <h5>Get started with your new account</h5>
+            <h2 style="color:#133b7e">Create Account</h2>
+            <h5 style="color:#133b7e">Get started with your new account</h5>
             </center>
             <form method="POST" enctype="multipart/form-data" action="{{ route('register') }}">
                 @csrf
@@ -50,7 +58,9 @@
                     <input type="checkbox" class="form-check-input" id="exampleCheck1">
                     <label class="form-check-label" for="exampleCheck1">Check me out</label>
                 </div>
+                <center>
                 <button type="submit" class="btn btn-primary">Submit</button>
+                </center>
             </form>
         </div>
     </div>
