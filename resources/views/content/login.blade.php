@@ -12,27 +12,22 @@
 @endsection
 
 @section('content')
-<style>
-    .auth{
-        background-image: url("{{ url('/') }}/assets/images/bg1.jpg");
-        background-repeat: no-repeat;
-        background-size: 100% 100%;
-    }
-</style>
-<div class="auth row justify-content-center align-items-center min-vh-100">
-    <div class="col-md-4">
-        <div class="card p-3">
-            <h4>Login</h4>
+<div class="row justify-content-center align-items-center mt-5" >
+    <div class="col-md-3">
+        <div class="card p-3" style="margin-top: 30%;">
+        <center>
+            <h4>Employee Login</h4>
+            </center><br>
             <form method="POST" action="{{ route('login') }}">
                 @csrf
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Username</label>
+                    <!-- <label for="exampleInputEmail1">Username</label> -->
                     <input type="text" class="form-control" id="username" name="username" placeholder="Enter Username">
-                </div>
+                </div><br>
                 <div class="form-group">
-                    <label for="exampleInputPassword1">Password</label>
+                    <!-- <label for="exampleInputPassword1">Password</label> -->
                     <input type="password" class="form-control" id="password" name="password" placeholder="Password">
-                </div>
+                </div><br>
                 <div class="form-check">
                     <input type="checkbox" class="form-check-input" id="exampleCheck1">
                     <label class="form-check-label" for="exampleCheck1">Check me out</label>
