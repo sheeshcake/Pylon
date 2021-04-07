@@ -29,10 +29,12 @@ class SiteController extends Controller
         $portfoliocategories = PortfolioCategories::all();
         $blogs = Blogs::orderBy('id', 'desc')->limit('3')->get();
         $users = User::orderBy('id', 'asc')->limit('4')->get();
+        $hardworkers = User::all()->count();
+        $projects = Portfolios::all()->count();
         $sitelog = new SiteLogs();
         $sitelog->action = "visit";
         $sitelog->save();
-        return view('welcome')->with('data', ['blogs' => $blogs, "portfolios" => $portfolios, "portfoliocategories" => $portfoliocategories, "users" => $users]);
+        return view('welcome')->with('data', ['blogs' => $blogs, "portfolios" => $portfolios, "projects" => $projects, "hardworkers" => $hardworkers, "portfoliocategories" => $portfoliocategories, "users" => $users]);
     }
 
     /**
@@ -128,7 +130,10 @@ class SiteController extends Controller
         $tags = Tags::all();
         $categories = Categories::all();
         $recent = Blogs::orderBy('id', 'desc')->limit('4')->get();
-        $portfolios = Portfolios::join("portfolio_images", "portfolio_images.portfolio_id", "=", "portfolios.id")->groupBy("portfolios.id")->get();
+        $portfolios = Portfolios::select(["portfolios.id as portfolio_id", "portfolios.*", "portfolio_categories.*", "portfolio_images.*"])
+                                ->join("portfolio_images", "portfolio_images.portfolio_id", "=", "portfolios.id")
+                                ->join("portfolio_categories", "portfolio_categories.id", "=", "portfolios.category_id")    
+                                ->groupBy("portfolios.id")->get();
         $portfoliocategories = PortfolioCategories::all();
         return view('landingcontent.allportfolio')->with('data', ["portfolios" => $portfolios, "tags" => $tags, "categories" => $categories, "recent" => $recent, "portfoliocategories" => $portfoliocategories]);
     }

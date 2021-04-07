@@ -12,7 +12,14 @@
 @endsection
 
 @section('content')
-<div class="row justify-content-center align-items-center mt-5">
+<style>
+    .auth{
+        background-image: url("{{ url('/') }}/assets/images/bg1.jpg");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+    }
+</style>
+<div class="auth row justify-content-center align-items-center min-vh-100">
     <div class="col-md-4">
         <div class="card p-3">
             <h4>Login</h4>

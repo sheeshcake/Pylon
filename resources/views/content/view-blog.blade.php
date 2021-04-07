@@ -111,7 +111,7 @@
 <script src="{{ url('/') }}/js/waves.js"></script>
 <script src="{{ url('/') }}/js/sidebarmenu.js"></script>
 <script src="{{ url('/') }}/js/custom.js"></script>
-<script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
+<script src="https://cdn.ckeditor.com/4.16.0/full/ckeditor.js"></script>
 <script>
     CKEDITOR.replace('content_input');
     $(document).ready(function(){
