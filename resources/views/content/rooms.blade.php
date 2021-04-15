@@ -30,12 +30,24 @@
                     @if($data["user"][0]["user_role"] == "client")
                         <a href="{{ route('newroom') }}" class="btn btn-primary mb-3">Add Room</a>
                     @endif
-
+                    @foreach($data["rooms"] as $rooms)
                     <div class="card">
                         <div class="card-body">
-                            <h1>Room1</h1>
+                            <div class="row">
+                                <div class="col">
+                                    <h3>{{ $rooms->room_name }}</h3>
+                                </div>
+                                <div class="col-md-2">
+                                    @if(auth()->user()->user_role == "client")
+                                        <a href="/rooms/room/{{ $rooms->id }}" class="btn btn-primary mx-1">Join</a>
+                                    @else
+                                        <a href="/timetrack/room/{{ $rooms->id }}" class="btn btn-primary mx-1">Join</a>
+                                    @endif
+                                </div>
+                            </div>
                         </div>
                     </div>
+                    @endforeach
 
                 </div>
             </div>

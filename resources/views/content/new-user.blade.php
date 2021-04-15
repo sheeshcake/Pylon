@@ -65,8 +65,16 @@
                                     </div>
                                     <div class="row">
                                         <div class="form-group col">
-                                            <label for="user_role">User Department</label>
-                                            <input type="text" class="form-control" id="user_role" name="user_role" maxlength="225" required>
+                                            <label for="user_role">User Role</label>
+                                            <select name="user_role" class="form-select">
+                                                <option value="admin">Admins</option>
+                                                <option value="client">Clients</option>
+                                                <option value="va">Virtual Assistant</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group col">
+                                            <label for="user_department">User Department</label>
+                                            <input type="text" class="form-control" id="user_department" name="user_department" maxlength="225" required>
                                         </div>
                                         <div class="form-group col">
                                             <label for="user_position">User Position</label>

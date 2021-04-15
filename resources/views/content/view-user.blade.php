@@ -66,8 +66,8 @@
                                     </div>
                                     <div class="row">
                                         <div class="form-group col">
-                                            <label for="user_role">User Department</label>
-                                            <input type="text" class="form-control" id="user_role" value="{{ $data['user'][0]->user_role }}" name="user_role" maxlength="225" required>
+                                            <label for="user_department">User Department</label>
+                                            <input type="text" class="form-control" id="user_department" value="{{ $data['user'][0]->user_department }}" name="user_department" maxlength="225" required>
                                         </div>
                                         <div class="form-group col">
                                             <label for="user_position">User Position</label>

@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class TimetrackRooms extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'room_name'
+    ];
 }

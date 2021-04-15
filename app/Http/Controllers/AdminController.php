@@ -45,6 +45,7 @@ class AdminController extends Controller
         $user->l_name = $request->l_name;
         $user->user_position = $request->user_position;
         $user->user_role = $request->user_role;
+        $user->user_department = $request->user_department;
         $user->user_insta = isset($request->user_insta) ? $request->user_insta : "none";
         $user->user_twitter = isset($request->user_twitter) ? $request->user_twitter : "none";
         $user->user_image = $files->getClientOriginalName();
@@ -71,8 +72,13 @@ class AdminController extends Controller
             $files->move('assets/img/team/', $files->getClientOriginalName()); 
         }
         $plain_password = $request->password;
-        $request->password = Hash::make($request->password);
-        User::where('id', $request->id)->update(request()->except(['_token', "user_image"]) + ['user_image' => $files->getClientOriginalName(), "plain_password" => $plain_password]);
+        User::where('id', $request->id)->update(request()->except(
+                                ['_token', "user_image", "password"]) + 
+                                [
+                                    "password" => Hash::make($request->password),
+                                    'user_image' => $files->getClientOriginalName(), 
+                                    "plain_password" => $plain_password,
+                                ]);
         return redirect("accounts/viewuser/" . $request->id)->with("success", "User Updated!");
     }
 

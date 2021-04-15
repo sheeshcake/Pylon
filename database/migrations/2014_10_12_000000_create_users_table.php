@@ -20,7 +20,8 @@ class CreateUsersTable extends Migration
             $table->string('username');
             $table->string('user_image');
             $table->string('user_position')->default('Chief Excecutive Officer');
-            $table->string('user_role')->default('Owner');
+            $table->string('user_role')->default('admin');
+            $table->string('user_department')->default('Owner');
             $table->string('user_insta')->default('');
             $table->string('user_twitter')->default('');
             $table->string('user_fb')->default('');

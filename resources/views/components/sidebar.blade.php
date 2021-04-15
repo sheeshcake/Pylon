@@ -8,7 +8,7 @@
     <nav class="sidebar-nav">
         <ul id="sidebarnav">
             <!-- User Profile-->
-            @if(auth()->user()->user_role == 'Admin' || auth()->user()->user_role == 'Owner'))
+            @if(auth()->user()->user_role == 'admin')
             <li class="sidebar-item">
                 <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('dashboard') }}" aria-expanded="false">
                     <i class="mdi me-2 mdi-gauge"></i>
@@ -39,6 +39,13 @@
                     <span class="hide-menu">Add User</span>
                 </a>
             </li>
+            @elseif(auth()->user()->user_role == "client")
+                <li class="sidebar-item">
+                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('rooms') }}" aria-expanded="false">
+                        <i class="mdi me-2 mdi-clock"></i>
+                        <span class="hide-menu">Time Track</span>
+                    </a>
+                </li>
             @else
                 <li class="sidebar-item">
                     <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('timetrack') }}" aria-expanded="false">

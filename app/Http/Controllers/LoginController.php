@@ -43,7 +43,12 @@ class LoginController extends Controller
             $credentials = $request->only('username', 'password');
             if (Auth::attempt($credentials)) {
                 $request->session()->regenerate();
-                return redirect()->intended('dashboard');
+                if(Auth::user()->user_role == "Owner"){
+                    return redirect('dashboard');
+                }else{
+                    return redirect('profile');
+                }
+                
             }else{
                 return Redirect::back()->withInput($request->input())->with([
                     'msg' => 'Username or Password is incorrect.',

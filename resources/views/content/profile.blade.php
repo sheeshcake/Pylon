@@ -15,7 +15,7 @@
                     @csrf
                     <div class="row">
                         <div class="col-lg-12 col-md-12">
-                            <input type="text" hidden value="{{ $data['user'][0]->id }}" name="portoflio_id">
+                            <input type="text" hidden value="{{ $data['user'][0]->id }}" name="id">
                             <div class="card">
                                 <div class="card-header">
                                     <h3>{{ $data['user'][0]->f_name . " " . $data['user'][0]->l_name }}</h3>
@@ -51,8 +51,8 @@
                                     </div>
                                     <div class="row">
                                         <div class="form-group col">
-                                            <label for="user_role">User Department</label>
-                                            <input type="text" class="form-control" id="user_role" value="{{ $data['user'][0]->user_role }}" name="user_role" maxlength="225" required>
+                                            <label for="user_department">User Department</label>
+                                            <input type="text" class="form-control" id="user_department" value="{{ $data['user'][0]->user_department }}" name="user_department" maxlength="225" required>
                                         </div>
                                         <div class="form-group col">
                                             <label for="user_position">User Position</label>
@@ -75,7 +75,7 @@
                                         </div> 
                                     </div>
                                     <div class="form-group">
-                                        <input type="file" class="form-control-file" name="portfolio_image[]" id="image_input" required multiple>
+                                    <input type="file" class="form-control-file" name="user_image" id="image_input" required>
                                         <label class="custom-file-label" for="image_input">User Image</label>
                                     </div>
                                     <input type="submit" class="btn btn-success" value="Save"> 
