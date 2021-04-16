@@ -80,25 +80,27 @@ Route::group(['middleware' => ['auth']], function(){
         Route::post("/adduser", "AdminController@AddUser")->name("adduser");
         Route::get("/viewuser/{id}", "AdminController@ShowUser")->name("viewuser");
     });
+    // if(Auth::user()->user_role == "client"){
+        Route::prefix("/timetrack")->group(function(){
+            Route::get("/", "TimeTrackVAController@ShowRooms")->name('timetrack');
+            Route::get("/room/{id}", "TimeTrackVAController@JoinRoom")->name('joinva');
+            Route::post("/leave", "TimeTrackVAController@LeaveRoom")->name('leave');
+            Route::post('/update', "TimeTrackVAController@UploadReport")->name('update');
+            Route::post('/refresh', "TimeTrackVAController@UpdateLastActivity")->name('refresh');
+        });
+    // }else if(Auth::user()->user_role == "va"){
+        Route::prefix("/rooms")->group(function(){
+            Route::get("/", "TimeTrackClientController@ShowRooms")->name("rooms");
+            Route::get("/newroom", "TimeTrackClientController@ShowNewRoom")->name("newroom");
+            Route::post("/addroom", "TimeTrackClientController@AddRoom")->name("addroom");
+            Route::post("/removeroom", "TimeTrackClientController@RemoveRoom")->name("removeroom");
+            Route::get("/room/{id}", "TimeTrackClientController@JoinRoom")->name("joinclient");
+            Route::get("/getupdate", "TimeTrackClientController@GetUpdate")->name("getupdate");
+            Route::post("/getsession", "TimeTrackClientController@GetSessions")->name("getsessions");
+            Route::get("/download/{id}", "TimeTrackClientController@DownloadSession")->name("download");
+        });
+    // }
 
-    Route::prefix("/timetrack")->group(function(){
-        Route::get("/", "TimeTrackVAController@ShowRooms")->name('timetrack');
-        Route::get("/room/{id}", "TimeTrackVAController@JoinRoom")->name('joinva');
-        Route::post("/leave", "TimeTrackVAController@LeaveRoom")->name('leave');
-        Route::post('/update', "TimeTrackVAController@UploadReport")->name('update');
-        Route::post('/refresh', "TimeTrackVAController@UpdateLastActivity")->name('refresh');
-    });
-
-    Route::prefix("/rooms")->group(function(){
-        Route::get("/", "TimeTrackClientController@ShowRooms")->name("rooms");
-        Route::get("/newroom", "TimeTrackClientController@ShowNewRoom")->name("newroom");
-        Route::post("/addroom", "TimeTrackClientController@AddRoom")->name("addroom");
-        Route::post("/removeroom", "TimeTrackClientController@RemoveRoom")->name("removeroom");
-        Route::get("/room/{id}", "TimeTrackClientController@JoinRoom")->name("joinclient");
-        Route::get("/getupdate", "TimeTrackClientController@GetUpdate")->name("getupdate");
-        Route::post("/getsession", "TimeTrackClientController@GetSessions")->name("getsessions");
-        Route::get("/download/{id}", "TimeTrackClientController@DownloadSession")->name("download");
-    });
 
     Route::prefix("/profile")->group(function(){
         Route::get("/", "AdminController@ShowProfile")->name("profile");

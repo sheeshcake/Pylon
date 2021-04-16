@@ -42,7 +42,7 @@
                                 <div class="card">
                                     <img class="card-img-top" id="user_image_{{ $user['user_id'] }}" src="{{ url('/') }}/assets/img/offline.gif"> 
                                     <div class="card-body"> 
-                                        <p class="card-title" >{{ $user["f_name"] . ' ' . $user["l_name"] }}</p> 
+                                        <p class="card-title" id="user_name_{{ $user['user_id'] }}">{{ $user["f_name"] . ' ' . $user["l_name"] }}</p> 
                                         <button data-toggle="modal" data-target="#user-session-modal" class="btn btn-primary open-session" value="{{ $user['user_id'] }}">Open Sessions</button> 
                                     </div> 
                                 </div>

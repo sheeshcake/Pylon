@@ -45,7 +45,7 @@ class TimeTrackClientController extends Controller
         $roomdata = TimetrackRooms::join("room_users", "timetrack_rooms.id", "=", "room_users.room_id")
                                     ->join("users", "room_users.user_id", "=", "users.id")
                                     ->where("timetrack_rooms.id", "=", $request->id)
-                                    ->get();
+                                    ->get(["users.id as user_id", "timetrack_rooms.*", "room_users.*", "users.*"]);
         return view("content.roomclient")->with("data", [
             "room" => $room,
             "roomdata" => $roomdata
@@ -77,10 +77,10 @@ class TimeTrackClientController extends Controller
                             ->get()
                             ->toArray();
         foreach($sessions as $index => $session){
-            $sessions[$index]["time_start"] = Carbon::parse($session["created_at"])->setTimezone('Asia/Singapore')->format("g:i A");
+            $sessions[$index]["time_start"] = Carbon::parse($session["session_time"])->setTimezone('Asia/Singapore')->format("g:i A");
             $sessions[$index]["time_end"] = Carbon::parse($session["updated_at"])->setTimezone('Asia/Singapore')->format("g:i A");
-            $startTime = Carbon::parse($session["created_at"])->setTimezone('Asia/Singapore');
-            $finishTime = Carbon::parse($session["updated_at"])->setTimezone('Asia/Singapore');
+            $startTime = Carbon::parse($session["session_time"]);
+            $finishTime = Carbon::parse($session["updated_at"]);
             $sessions[$index]["duration"] = $finishTime->diffForHumans($startTime, true);
             $sessions[$index]["created_at"] = Carbon::parse($session["created_at"])->setTimezone('Asia/Singapore')->format("F d, Y");
         }

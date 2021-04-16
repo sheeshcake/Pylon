@@ -18,7 +18,14 @@ class LoginController extends Controller
 {
     public function ShowLogin(){
         if(Auth::check()){
-            return redirect('/dashboard');
+            if(Auth::user()->user_role == "admin"){
+                return redirect('dashboard');
+            }else if(Auth::user()->user_role == "client"){
+                return redirect('rooms');
+            }
+            else{
+                return redirect('timetrack');
+            }
         }else{
             if(User::all()->isEmpty()){
                 return redirect('register');
@@ -43,10 +50,13 @@ class LoginController extends Controller
             $credentials = $request->only('username', 'password');
             if (Auth::attempt($credentials)) {
                 $request->session()->regenerate();
-                if(Auth::user()->user_role == "Owner"){
+                if(Auth::user()->user_role == "admin"){
                     return redirect('dashboard');
-                }else{
-                    return redirect('profile');
+                }else if(Auth::user()->user_role == "client"){
+                    return redirect('rooms');
+                }
+                else{
+                    return redirect('timetrack');
                 }
                 
             }else{
