@@ -66,6 +66,14 @@
                                     </div>
                                     <div class="row">
                                         <div class="form-group col">
+                                            <label for="user_role">User Role</label>
+                                            <select name="user_role" class="form-select">
+                                                <option value="admin" @if($data['user'][0]['user_role'] == 'admin') echo selected @endif>Admins</option>
+                                                <option value="client" @if($data['user'][0]['user_role'] == 'client') echo selected @endif>Clients</option>
+                                                <option value="va" @if($data['user'][0]['user_role'] == 'va') echo selected @endif>Virtual Assistant</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group col">
                                             <label for="user_department">User Department</label>
                                             <input type="text" class="form-control" id="user_department" value="{{ $data['user'][0]->user_department }}" name="user_department" maxlength="225" required>
                                         </div>
