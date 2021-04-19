@@ -16,7 +16,7 @@ class CreateScreenshotsTable extends Migration
         Schema::create('screenshots', function (Blueprint $table) {
             $table->id();
             $table->foreignId("session_id");
-            $table->string("session_image");
+            $table->longText("session_image");
             $table->timestamps();
         });
     }
