@@ -100,7 +100,11 @@ Route::group(['middleware' => ['auth']], function(){
             Route::get("/download/{id}", "TimeTrackClientController@DownloadSession")->name("download");
         });
     // }
-
+    //Chat System
+    Route::prefix("/chat")->group(function(){
+        Route::get("/", "ChatController@GetChats")->name("chat");
+        Route::post("/", "ChatController@SendChat")->name("chat");
+    });
 
     Route::prefix("/profile")->group(function(){
         Route::get("/", "AdminController@ShowProfile")->name("profile");

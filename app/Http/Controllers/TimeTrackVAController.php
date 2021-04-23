@@ -18,6 +18,21 @@ class TimeTrackVAController extends Controller
     public function ShowRooms(){
         $user = User::where("id", "=", Auth::user()->id)->get();
         $rooms = TimetrackRooms::all();
+        RoomUsers::where("user_id", "=", Auth::user()->id)
+        ->update([
+            "is_online" => "offline"
+        ]);
+        RoomSessions::where("user_id", "=", Auth::user()->id)
+                ->update([
+                    "session_status" => "offline"
+                ]);
+        foreach(glob(Auth::user()->id . "-*.txt") as $index => $file){
+            if(!is_dir($file)) { 
+                $text = fopen($file, "w") or die("Unable to open file!");
+                fwrite($text, URL::to('') . "/assets/img/offline.gif");
+                fclose($text);
+            }
+        }
         return view("content.rooms")->with("data", [
                     "user" => $user,
                     "rooms" => $rooms

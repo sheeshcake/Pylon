@@ -74,6 +74,7 @@ class TimeTrackClientController extends Controller
                                     ["room_sessions.room_id", "=", $request->room_id],
                                     ["room_sessions.session_status", "=", "offline"]
                                 ])
+                            ->groupBy("room_sessions.id")
                             ->get()
                             ->toArray();
         foreach($sessions as $index => $session){
@@ -98,22 +99,38 @@ class TimeTrackClientController extends Controller
         $zip = new ZipArchive();
         $filename = $userdetails[0]["f_name"] . "-" . $userdetails[0]["l_name"] . "-" . $id . ".zip";
         if ($zip->open($filename, ZipArchive::CREATE)!==TRUE) {
-            exit("cannot open <$filename>\n");
+            echo("cannot open <$filename>\n");
         }else{
+            $counter = 0;
             foreach($data as $files){
-                $imagename = Carbon::parse($files["created_at"])->setTimezone('Asia/Singapore')->format("F d, Y g:i A") . ".png";
-                $im = imagecreatefrompng($files["session_image"]);
-                imagepng($im, "temp.png");
+                $imagename = Carbon::parse($files["created_at"])->setTimezone('Asia/Singapore')->format("F d, Y g:i A") . ": " . $counter . ".jpg";
+                $data1 = explode(',', $files["session_image"]);
+                $bin = base64_decode($data1[1]);
+                $im = imageCreateFromString($bin);
+                imagejpeg($im, "temp" . $counter . ".jpg");
                 imagedestroy($im);
-                $zip->addFile("temp.png", $imagename);
+                $zip->addFile("temp" . $counter . ".jpg", $imagename);
+                $counter++;
+                if(count($data) == $counter){
+                    for($i = 0; $i < $counter; $i++){
+                        unlink("temp" . $i . ".jpg");
+                    }
+                    $this->Download($filename);
+                }
             }
+            echo count($data) . "---" . $counter;
         }
+
+    }
+
+    private function Download($filename){
         header("Content-type: application/zip"); 
         header("Content-Disposition: attachment; filename=$filename");
         header("Content-length: " . filesize($filename));
         header("Pragma: no-cache"); 
         header("Expires: 0"); 
         readfile("$filename");
+        unlink($filename);
     }
 
 }
