@@ -104,6 +104,7 @@
 <script src="{{ url('/') }}/js/sidebarmenu.js"></script>
 <script src="{{ url('/') }}/js/custom.js"></script>
 <script src="http://cdn.jsdelivr.net/g/filesaver.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.fileDownload/1.4.2/jquery.fileDownload.min.js" integrity="sha512-MZrUNR8jvUREbH8PRcouh1ssNRIVHYQ+HMx0HyrZTezmoGwkuWi1XoaRxWizWO8m0n/7FXY2SSAsr2qJXebUcA==" crossorigin="anonymous"></script>
 <script>
     $("#room_name_input").on('input', function(){
         $(".room_name").text($(this).val());
@@ -130,6 +131,7 @@
         }
     });
     var length = 0;
+    var chatcounter = 1000;
     function getchats(){
         $.ajax({
             url: "/chat",
@@ -164,10 +166,17 @@
                     });
                     length = data.length;
                     $('#chat-container').animate({scrollTop: $('#chat-container').prop("scrollHeight")}, 500);
+                    setTimeout(() => {
+                        getchats();
+                        chatcounter = 1000;
+                    }, chatcounter);
+                }else{
+                    setTimeout(() => {
+                        getchats();
+                        chatcounter += 500;
+                    }, chatcounter);
                 }
-                setTimeout(() => {
-                    getchats();
-                }, 1000);
+
             }
         })
 
@@ -206,7 +215,12 @@
     }
     var myInterval1 = setInterval(function(){
         refresh_data();
-    }, 5000);
+    }, 15000);
+    $(document).on("click", ".download_session", function(){
+        $.fileDownload("{{ url('/') }}/rooms/download/" + $(this).val())
+        .done(function () { alert('File download a success!'); })
+        .fail(function () { alert('File download failed!'); });
+    });
     $(document).on("click", ".open-session", function(){
         var user_id = $(this).val();
         $("#user-name").text($("#user_name_" + user_id).text());
@@ -235,7 +249,7 @@
                                         '</h3>' +
                                     '</div>' +
                                     '<div class="col-md-2">' +
-                                        '<a href="/rooms/download/' + e["session_id"] + '" class="btn btn-primary mx-1">Download Session</a>' +
+                                        '<button value="' + e["session_id"] + '" class="btn btn-primary mx-1 download_session">Download Session</button>' +
                                     '</div>' +
                                 '</div>' +
                             '</div>' +

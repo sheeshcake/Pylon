@@ -97,9 +97,11 @@ class TimeTrackClientController extends Controller
                                     ->get()
                                     ->toArray();
         $zip = new ZipArchive();
+        sleep(5);
         $filename = $userdetails[0]["f_name"] . "-" . $userdetails[0]["l_name"] . "-" . $id . ".zip";
-        if ($zip->open($filename, ZipArchive::CREATE)!==TRUE) {
-            echo("cannot open <$filename>\n");
+        if ($zip->open($filename, ZipArchive::CREATE) !== TRUE) {
+            echo("cannot open $filename");
+            ob_clean();
         }else{
             $counter = 0;
             foreach($data as $files){
@@ -108,28 +110,28 @@ class TimeTrackClientController extends Controller
                 $bin = base64_decode($data1[1]);
                 $im = imageCreateFromString($bin);
                 imagejpeg($im, "temp" . $counter . ".jpg");
-                imagedestroy($im);
-                $zip->addFile("temp" . $counter . ".jpg", $imagename);
-                $counter++;
-                if(count($data) == $counter){
-                    for($i = 0; $i < $counter; $i++){
-                        unlink("temp" . $i . ".jpg");
-                    }
-                    $this->Download($filename);
+                if(file_exists("temp" . $counter . ".jpg")){
+                    $zip->addFile("temp" . $counter . ".jpg", $imagename);
+                    imagedestroy($im);
                 }
+                $counter++;
             }
             echo count($data) . "---" . $counter;
+            $this->Download($filename, $counter);
         }
 
     }
 
-    private function Download($filename){
+    private function Download($filename, $counter){
         header("Content-type: application/zip"); 
         header("Content-Disposition: attachment; filename=$filename");
         header("Content-length: " . filesize($filename));
         header("Pragma: no-cache"); 
         header("Expires: 0"); 
         readfile("$filename");
+        for($i = 0; $i < $counter; $i++){
+            unlink("temp" . $i . ".jpg");
+        }
         unlink($filename);
     }
 
