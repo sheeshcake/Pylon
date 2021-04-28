@@ -65,7 +65,13 @@
                 </div>
                 <div class="toast-body chat-container" style="min-height: 450px;">
                     <div id="chat-container" class="chat border-0 m-0 p-0 position-relative" style="min-height: 400px; max-height: 400px; overflow-y: scroll;">
-                        Loading Chats
+                        <center>
+                            <div class="spinner-border" role="status">
+                                <span class="sr-only">Loading...</span>
+                            </div>
+                            <br>
+                            Loading Chats
+                        </center>
                     </div>
                     <div class="d-flex">
                         <input type="text" id="chat_content" class="form-control">
@@ -138,35 +144,53 @@
             },
             success: function(d){
                 var data = JSON.parse(d);
-                if(length != data.length){
-                    $("#chat-container").html("");
-                    data.forEach(function(item){
-                        console.log(item["user_id"] == "{{ auth()->user()->id }}");
-                        if(item["user_id"] == "{{ auth()->user()->id }}"){
-                            $("#chat-container").append(
-                                '<div class="row m-0">' +
-                                    '<div class="position-relative balon1 p-1 m-0 w-100" data-is="You - ' + item["ago"] + '">' +
-                                        '<a class="float-right">' + item["chat_content"] + '</a>' +
-                                    '</div>' +
-                                '</div>'
+                if(data.length > 0){
+                    if(length != data.length){
+                        $("#chat-container").html("");
+                        data.forEach(function(item){
+                            console.log(item["user_id"] == "{{ auth()->user()->id }}");
+                            if(item["user_id"] == "{{ auth()->user()->id }}"){
+                                $("#chat-container").append(
+                                    '<div class="row m-0">' +
+                                        '<div class="position-relative balon1 p-1 m-0 w-100" data-is="You - ' + item["ago"] + '">' +
+                                            '<a class="float-right">' + item["chat_content"] + '</a>' +
+                                        '</div>' +
+                                    '</div>'
 
-                            );
-                        }else{
-                            $("#chat-container").append(
-                                '<div class="row m-0">' +
-                                    '<div class="position-relative balon2 p-1 m-0 w-100" data-is="' + item["f_name"] + ' - ' + item["ago"] + '">' +
-                                        '<a class="float-left">' + item["chat_content"] + '</a>' +
-                                    '</div>' +
-                                '</div>'
-                            );
+                                );
+                            }else{
+                                $("#chat-container").append(
+                                    '<div class="row m-0">' +
+                                        '<div class="position-relative balon2 p-1 m-0 w-100" data-is="' + item["f_name"] + ' - ' + item["ago"] + '">' +
+                                            '<a class="float-left">' + item["chat_content"] + '</a>' +
+                                        '</div>' +
+                                    '</div>'
+                                );
+                            }
+                        });
+                        length = data.length;
+                        $('#chat-container').animate({scrollTop: $('#chat-container').prop("scrollHeight")}, 500);
+                        setTimeout(() => {
+                            getchats();
+                            chatcounter = 1000;
+                        }, chatcounter);
+                    }else{
+                        if(chatcounter <= 5000){
+                            setTimeout(() => {
+                                getchats();
+                                chatcounter += 500;
+                            }, chatcounter);
                         }
-                    });
-                    length = data.length;
-                    $('#chat-container').animate({scrollTop: $('#chat-container').prop("scrollHeight")}, 500);
+                    }
+                }else{
+                    $("#chat-container").text("Say \"HI!\"");
+                    if(chatcounter <= 5000){
+                        setTimeout(() => {
+                            getchats();
+                            chatcounter += 500;
+                        }, chatcounter);
+                    }
                 }
-                setTimeout(() => {
-                    getchats();
-                }, 1000);
             }
         })
 
@@ -187,6 +211,7 @@
                 $("#chat_content").val("");
             }
         });
+        chatcounter = 1000;
     }
 
 

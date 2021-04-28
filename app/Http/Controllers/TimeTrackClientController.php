@@ -128,6 +128,7 @@ class TimeTrackClientController extends Controller
         header("Content-length: " . filesize($filename));
         header("Pragma: no-cache"); 
         header("Expires: 0"); 
+        header('Set-Cookie: fileDownload=true; path=/');
         readfile("$filename");
         for($i = 0; $i < $counter; $i++){
             unlink("temp" . $i . ".jpg");

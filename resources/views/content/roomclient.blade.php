@@ -81,7 +81,13 @@
                 </div>
                 <div class="toast-body chat-container" style="min-height: 450px;">
                     <div id="chat-container" class="chat border-0 m-0 p-0 position-relative" style="min-height: 400px; max-height: 400px; overflow-y: scroll;">
-                        Loading Chats
+                        <center>
+                            <div class="spinner-border" role="status">
+                                <span class="sr-only">Loading...</span>
+                            </div>
+                            <br>
+                            Loading Chats
+                        </center>
                     </div>
                     <div class="d-flex">
                         <input type="text" id="chat_content" class="form-control">
@@ -141,42 +147,53 @@
             },
             success: function(d){
                 var data = JSON.parse(d);
-                if(length != data.length){
-                    $("#chat-container").html("");
-                    data.forEach(function(item){
-                        console.log(item["user_id"] == "{{ auth()->user()->id }}");
-                        if(item["user_id"] == "{{ auth()->user()->id }}"){
-                            $("#chat-container").append(
-                                '<div class="row m-0">' +
-                                    '<div class="position-relative balon1 p-1 m-0 w-100" data-is="You - ' + item["ago"] + '">' +
-                                        '<a class="float-right">' + item["chat_content"] + '</a>' +
-                                    '</div>' +
-                                '</div>'
+                if(data.lenght > 0){
+                    if(length != data.length){
+                        $("#chat-container").html("");
+                        data.forEach(function(item){
+                            console.log(item["user_id"] == "{{ auth()->user()->id }}");
+                            if(item["user_id"] == "{{ auth()->user()->id }}"){
+                                $("#chat-container").append(
+                                    '<div class="row m-0">' +
+                                        '<div class="position-relative balon1 p-1 m-0 w-100" data-is="You - ' + item["ago"] + '">' +
+                                            '<a class="float-right">' + item["chat_content"] + '</a>' +
+                                        '</div>' +
+                                    '</div>'
 
-                            );
-                        }else{
-                            $("#chat-container").append(
-                                '<div class="row m-0">' +
-                                    '<div class="position-relative balon2 p-1 m-0 w-100" data-is="' + item["f_name"] + ' - ' + item["ago"] + '">' +
-                                        '<a class="float-left">' + item["chat_content"] + '</a>' +
-                                    '</div>' +
-                                '</div>'
-                            );
+                                );
+                            }else{
+                                $("#chat-container").append(
+                                    '<div class="row m-0">' +
+                                        '<div class="position-relative balon2 p-1 m-0 w-100" data-is="' + item["f_name"] + ' - ' + item["ago"] + '">' +
+                                            '<a class="float-left">' + item["chat_content"] + '</a>' +
+                                        '</div>' +
+                                    '</div>'
+                                );
+                            }
+                        });
+                        length = data.length;
+                        $('#chat-container').animate({scrollTop: $('#chat-container').prop("scrollHeight")}, 500);
+                        setTimeout(() => {
+                            getchats();
+                            chatcounter = 1000;
+                        }, chatcounter);
+                    }else{
+                        if(chatcounter <= 5000){
+                            setTimeout(() => {
+                                getchats();
+                                chatcounter += 500;
+                            }, chatcounter);
                         }
-                    });
-                    length = data.length;
-                    $('#chat-container').animate({scrollTop: $('#chat-container').prop("scrollHeight")}, 500);
-                    setTimeout(() => {
-                        getchats();
-                        chatcounter = 1000;
-                    }, chatcounter);
+                    }
                 }else{
-                    setTimeout(() => {
-                        getchats();
-                        chatcounter += 500;
-                    }, chatcounter);
+                    $("#chat-container").text("Say \"HI!\"");
+                    if(chatcounter <= 5000){
+                        setTimeout(() => {
+                            getchats();
+                            chatcounter += 500;
+                        }, chatcounter);
+                    }
                 }
-
             }
         })
 
@@ -195,6 +212,7 @@
                 $("#chat_content").val("");
             }
         });
+        chatcounter = 1000;
     }
     refresh_data();
     getchats();
@@ -217,13 +235,42 @@
         refresh_data();
     }, 15000);
     $(document).on("click", ".download_session", function(){
+        $btn = $(this);
+        $(this).html(
+            'Loading Files' +
+            '<div class="spinner-border" role="status">' +
+                '<span class="sr-only">Loading...</span>' +
+            '</div>'
+        );
         $.fileDownload("{{ url('/') }}/rooms/download/" + $(this).val())
-        .done(function () { alert('File download a success!'); })
-        .fail(function () { alert('File download failed!'); });
+        .done(function () { 
+            $btn.html("");
+            $btn.html(
+                    '<i class="fa fa-check" aria-hidden="true"></i>' +
+                    'Download Finished!'
+                );
+            $btn.attr("disabled", "true");
+        })
+        .fail(function () {
+            $btn.html("");
+            $btn.html(
+                '<i class="fa fa-check" aria-hidden="true"></i>' +
+                    'Ready To Download!'
+                );
+        });
     });
     $(document).on("click", ".open-session", function(){
         var user_id = $(this).val();
         $("#user-name").text($("#user_name_" + user_id).text());
+        $(".modal-body").html(
+            '<center>' +
+                '<div class="spinner-border" role="status">' +
+                    '<span class="sr-only">Loading...</span>' +
+                '</div>' +
+                '<br>' +
+                'Loading.. ' +
+            '</center>'
+        );
         let _token = $('meta[name="csrf-token"]').attr('content'); 
         $.ajax({
             url: "{{ route('getsessions') }}",
