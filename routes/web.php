@@ -21,7 +21,10 @@ use App\Http\Controllers\PortfolioCategoriesController;
 |
 */
 
-
+Route::get('/.env', function() {
+    $exitCode = Artisan::call('cache:clear');
+    abort(403, 'Unauthorized action.');
+});
 
 
 

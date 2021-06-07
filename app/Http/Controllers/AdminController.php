@@ -67,18 +67,25 @@ class AdminController extends Controller
 
     public function UpdateUser(Request $request){
         $files = $request->file('user_image');
+        $plain_password = $request->password;
         if($request->hasFile('user_image'))
         {
-            $files->move('assets/img/team/', $files->getClientOriginalName()); 
+            $files->move('assets/img/team/', $files->getClientOriginalName());
+            User::where('id', $request->id)->update(request()->except(
+                ['_token', "user_image", "password"]) + 
+                [
+                    "password" => Hash::make($request->password),
+                    'user_image' => $files->getClientOriginalName(), 
+                    "plain_password" => $plain_password,
+                ]);
+        }else{
+            User::where('id', $request->id)->update(request()->except(
+                ['_token', "user_image", "password"]) + 
+                [
+                    "password" => Hash::make($request->password),
+                    "plain_password" => $plain_password,
+                ]);
         }
-        $plain_password = $request->password;
-        User::where('id', $request->id)->update(request()->except(
-                                ['_token', "user_image", "password"]) + 
-                                [
-                                    "password" => Hash::make($request->password),
-                                    'user_image' => $files->getClientOriginalName(), 
-                                    "plain_password" => $plain_password,
-                                ]);
         return redirect("accounts/viewuser/" . $request->id)->with("success", "User Updated!");
     }
 

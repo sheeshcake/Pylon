@@ -124,7 +124,6 @@
             
             
             <!-- ======= Services Section ======= -->
-            
 
             <!-- ======= Pricing Section ======= -->
             
@@ -134,6 +133,8 @@
 
             <!-- ======= Portfolio Section ======= -->
             @include('landingcontent.portfolio')
+
+            @include('landingcontent.featured')
 
             <!-- ======= Testimonials Section ======= -->
             @include('landingcontent.testimonials')

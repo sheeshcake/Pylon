@@ -23,7 +23,7 @@ Team
         $user_department = ""
     @endphp
     @foreach ($data['users'] as $user)
-        @if($user->user_role != "client")
+        @if( $user->user_role != "client")
             @php
                 if($user_department != $user->user_department)
                     echo '</div><center class="my-3"><h1>' . $user->user_department . '</h1></center><div class="row justify-content-center">';

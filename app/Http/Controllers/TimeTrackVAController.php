@@ -91,7 +91,8 @@ class TimeTrackVAController extends Controller
     public function UploadReport(Request $request){
         $session = RoomSessions::where([
                 ['user_id','=', Auth::user()->id],
-                ['room_id', '=', $request->room_id]
+                ['room_id', '=', $request->room_id],
+                ['session_status', '=', 'online']
             ])->first();
         $screenshots = new Screenshots();
         $screenshots->session_id = $session->id;

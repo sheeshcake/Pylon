@@ -70,6 +70,7 @@
                                                 <option value="admin">Admins</option>
                                                 <option value="client">Clients</option>
                                                 <option value="va">Virtual Assistant</option>
+                                                <option value="dm">Digital Marketing</option>
                                             </select>
                                         </div>
                                         <div class="form-group col">

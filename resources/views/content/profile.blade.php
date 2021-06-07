@@ -22,6 +22,9 @@
                                 </div>
                                 <div class="card-body">
                                     <div class="row">
+                                        <div class="col">
+                                            <img src="{{ url('/') }}/assets/img/team/{{ $data['user'][0]->user_image }}" height="100" alt="">
+                                        </div>
                                         <div class="form-group col">
                                             <label for="f_name">First Name</label>
                                             <input type="text" class="form-control" id="f_name" value="{{ $data['user'][0]->f_name }}" name="f_name" maxlength="225">

@@ -23,30 +23,33 @@ Portfolios
         <article class="entry">
 
             <div class="entry-img">
-            <img src="{{ url('/') }}/assets/img/portfolio/{{ $portfolio->image_name }}" alt="" class="img-fluid">
+            <img src="{{ url('/') }}/assets/img/portfolio/{{ $portfolio['image_name'] }}" alt="" class="img-fluid">
             </div>
 
             <h2 class="entry-title">
-            <a href="{{ route('pylonportfolio') }}/{{ $portfolio->portfolio_id }}">{{ $portfolio->portfolio_name }}</a>
+            <a href="{{ route('pylonportfolio') }}/{{ $portfolio['portfolio_id'] }}">{{ $portfolio["portfolio_name"] }}</a>
             </h2>
 
             <div class="entry-meta">
             <ul>
-                <li class="d-flex align-items-center"><i class="bi bi-grid"></i> <a href="/pylonservices/{{ $portfolio->category_id }}">{{ $portfolio->category_name }}</a></li>
-                <!-- <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="blog-single.html"><time>{{ date("F jS, Y", strtotime($portfolio->created_at)) }}</time></a></li>
+                <li class="d-flex align-items-center"><i class="bi bi-grid"></i> <a href="/pylonservices/{{ $portfolio["category_id"] }}">{{ $portfolio["category_name"] }}</a></li>
+                <!-- <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="blog-single.html"><time>{{ date("F jS, Y", strtotime($portfolio["created_at"])) }}</time></a></li>
                 <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="blog-single.html">12 Comments</a></li> -->
             </ul>
             </div>
 
             <div class="entry-content">
-            {!! strip_tags(Str::limit($portfolio->portfolio_content, 300, $end='...')) !!}
+            {!! strip_tags(Str::limit($portfolio["portfolio_content"], 300, $end='...')) !!}
             <div class="read-more">
-                <a href="{{ route('pylonportfolio') }}/{{ $portfolio->portfolio_id }}">Read More</a>
+                <a href="{{ route('pylonportfolio') }}/{{ $portfolio["portfolio_id"] }}">Read More</a>
             </div>
             </div>
 
         </article><!-- End blog entry -->
     @endforeach
+    <div class="d-flex justify-content-center">
+    {!! $data['portfolios']->links("pagination::bootstrap-4") !!}
+    </div>
 @endsection
 
 @section('recent')

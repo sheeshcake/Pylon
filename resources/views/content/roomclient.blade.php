@@ -112,6 +112,31 @@
 <script src="http://cdn.jsdelivr.net/g/filesaver.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.fileDownload/1.4.2/jquery.fileDownload.min.js" integrity="sha512-MZrUNR8jvUREbH8PRcouh1ssNRIVHYQ+HMx0HyrZTezmoGwkuWi1XoaRxWizWO8m0n/7FXY2SSAsr2qJXebUcA==" crossorigin="anonymous"></script>
 <script>
+    $(document).on("click", ".download_session", function(){
+        $btn = $(this);
+        $(this).html(
+            'Loading Files' +
+            '<div class="spinner-border" role="status">' +
+                '<span class="sr-only">Loading...</span>' +
+            '</div>'
+        );
+        $.fileDownload("{{ url('/') }}/rooms/download/" + $(this).val())
+        .done(function () { 
+            $btn.html("");
+            $btn.html(
+                    '<i class="fa fa-check" aria-hidden="true"></i>' +
+                    'Download Finished!'
+                );
+            $btn.attr("disabled", "true");
+        })
+        .fail(function () {
+            $btn.html("");
+            $btn.html(
+                '<i class="fa fa-check" aria-hidden="true"></i>' +
+                    'Ready To Download!'
+                );
+        });
+    });
     $("#room_name_input").on('input', function(){
         $(".room_name").text($(this).val());
     });
@@ -147,7 +172,7 @@
             },
             success: function(d){
                 var data = JSON.parse(d);
-                if(data.lenght > 0){
+                if(data.length > 0){
                     if(length != data.length){
                         $("#chat-container").html("");
                         data.forEach(function(item){
@@ -178,21 +203,17 @@
                             chatcounter = 1000;
                         }, chatcounter);
                     }else{
-                        if(chatcounter <= 5000){
-                            setTimeout(() => {
-                                getchats();
-                                chatcounter += 500;
-                            }, chatcounter);
-                        }
-                    }
-                }else{
-                    $("#chat-container").text("Say \"HI!\"");
-                    if(chatcounter <= 5000){
                         setTimeout(() => {
                             getchats();
                             chatcounter += 500;
                         }, chatcounter);
                     }
+                }else{
+                    $("#chat-container").text("Say \"HI!\"");
+                    setTimeout(() => {
+                        getchats();
+                        chatcounter += 500;
+                    }, chatcounter);
                 }
             }
         })
@@ -234,31 +255,6 @@
     var myInterval1 = setInterval(function(){
         refresh_data();
     }, 15000);
-    $(document).on("click", ".download_session", function(){
-        $btn = $(this);
-        $(this).html(
-            'Loading Files' +
-            '<div class="spinner-border" role="status">' +
-                '<span class="sr-only">Loading...</span>' +
-            '</div>'
-        );
-        $.fileDownload("{{ url('/') }}/rooms/download/" + $(this).val())
-        .done(function () { 
-            $btn.html("");
-            $btn.html(
-                    '<i class="fa fa-check" aria-hidden="true"></i>' +
-                    'Download Finished!'
-                );
-            $btn.attr("disabled", "true");
-        })
-        .fail(function () {
-            $btn.html("");
-            $btn.html(
-                '<i class="fa fa-check" aria-hidden="true"></i>' +
-                    'Ready To Download!'
-                );
-        });
-    });
     $(document).on("click", ".open-session", function(){
         var user_id = $(this).val();
         $("#user-name").text($("#user_name_" + user_id).text());
@@ -284,6 +280,8 @@
                 $(".modal-body").text("");
                 var data = JSON.parse(d);
                 data.forEach(function(e){
+                    if(e["session_status"] == "offline") e["session_status"] = "Ended";
+                    if(e["session_status"] == "online") e["session_status"] = "Ongoing";
                     $(".modal-body").append(
                         '<div class="card">' +
                             '<div class="card-body">' +
@@ -293,6 +291,7 @@
                                             '<br>Date: ' + e["created_at"] + 
                                             '<br>Time: ' + e["time_start"] + " to " + e["time_end"] +
                                             '<br>Duration: ' + e["duration"] +
+                                            '<br>Status: '+ e["session_status"] +
                                         '</h3>' +
                                     '</div>' +
                                     '<div class="col-md-2">' +

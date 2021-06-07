@@ -7,7 +7,7 @@
             <div class="count-box">
             <i class="bi bi-emoji-smile"></i>
             <div>
-                <span data-purecounter-start="0" data-purecounter-end="{{ $data['projects'] }}" data-purecounter-duration="1" class="purecounter"></span>
+                <span data-purecounter-start="0" data-purecounter-end="52" data-purecounter-duration="1" class="purecounter"></span>
                 <p>Happy Clients</p>
             </div>
             </div>
@@ -17,7 +17,7 @@
             <div class="count-box">
             <i class="bi bi-journal-richtext" style="color: #ee6c20;"></i>
             <div>
-                <span data-purecounter-start="0" data-purecounter-end="{{ $data['projects'] }}" data-purecounter-duration="1" class="purecounter"></span>
+                <span data-purecounter-start="0" data-purecounter-end="106" data-purecounter-duration="1" class="purecounter"></span>
                 <p>Projects</p>
             </div>
             </div>
@@ -27,8 +27,8 @@
             <div class="count-box">
             <i class="bi bi-headset" style="color: #15be56;"></i>
             <div>
-                <span data-purecounter-start="0" data-purecounter-end="1463" data-purecounter-duration="1" class="purecounter"></span>
-                <p>Hours Of Support</p>
+                <span data-purecounter-start="0" data-purecounter-end="3" data-purecounter-duration="1" class="purecounter"></span>
+                <p>Years Of Support</p>
             </div>
             </div>
         </div>
@@ -38,7 +38,7 @@
             <i class="bi bi-people" style="color: #bb0852;"></i>
             <div>
                 <span data-purecounter-start="0" data-purecounter-end="{{ $data['hardworkers'] }}" data-purecounter-duration="1" class="purecounter"></span>
-                <p>Hard Workers</p>
+                <p>Employees</p>
             </div>
             </div>
         </div>

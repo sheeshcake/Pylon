@@ -11,6 +11,7 @@ use App\Models\Portfolios;
 use App\Models\PortfolioCategories;
 use App\Models\PortfolioImages;
 use App\Models\SiteLogs;
+use Illuminate\Pagination\LengthAwarePaginator as Paginator;
 
 class SiteController extends Controller
 {
@@ -25,6 +26,8 @@ class SiteController extends Controller
                                 ->join("portfolio_images", "portfolio_images.portfolio_id", "=", "portfolios.id")
                                 ->join("portfolio_categories", "portfolio_categories.id", "=", "portfolios.category_id")
                                 ->groupBy("portfolios.id")
+                                ->limit(9)
+                                ->inRandomOrder()
                                 ->get();
         $portfoliocategories = PortfolioCategories::all();
         $blogs = Blogs::orderBy('id', 'desc')->limit('3')->get();
@@ -118,24 +121,52 @@ class SiteController extends Controller
     {
         //
     }
-    public function ShowAllBlog(){
+    public function ShowAllBlog(Request $request){
         $tags = Tags::all();
         $categories = Categories::all();
         $recent = Blogs::orderBy('id', 'desc')->limit('4')->get();
         $portfoliocategories = PortfolioCategories::all();
-        $blogs = Blogs::join('users', "users.id", "=", "blogs.user_id")->orderBy('blogs.id', 'desc')->get(["blogs.id AS blog_id", "blogs.*", "users.*"]);
-        return view('landingcontent.blog')->with('data', ["blogs" => $blogs, "tags" => $tags, "categories" => $categories, "recent" => $recent, "portfoliocategories" => $portfoliocategories]);
+        $blogs = Blogs::join('users', "users.id", "=", "blogs.user_id")->orderBy('blogs.id', 'desc')->get(["blogs.id AS blog_id", "blogs.*", "users.*"])->toArray();
+        if(count($blogs) > 0){
+            $limit = $request->input('limit', 5);
+            $page = $request->input('page', 1);
+            if ($page > count($blogs) || $page < 1) {
+                $page = 1;
+            }
+            $offset = ($page * $limit) - $limit;
+            $products_slice = array_slice($blogs, $offset, $limit);
+            $datas = new Paginator($products_slice, count($blogs), $limit, $page,  [
+                'path'  => $request->url(),
+                'query' => $request->query(),
+            ]);
+            $datas->setPath('/pylonblog');
+        }
+
+        return view('landingcontent.blog')->with('data', ["blogs" => $datas, "tags" => $tags, "categories" => $categories, "recent" => $recent, "portfoliocategories" => $portfoliocategories]);
     }
-    public function ShowAllPortfolio(){
+    public function ShowAllPortfolio(Request $request){
         $tags = Tags::all();
         $categories = Categories::all();
         $recent = Blogs::orderBy('id', 'desc')->limit('4')->get();
-        $portfolios = Portfolios::select(["portfolios.id as portfolio_id", "portfolios.*", "portfolio_categories.*", "portfolio_images.*"])
+        $limit = $request->input('limit', 5);
+        $page = $request->input('page', 1);
+        $portfolios =  Portfolios::select(["portfolios.id as portfolio_id", "portfolios.*", "portfolio_categories.*", "portfolio_images.*"])
                                 ->join("portfolio_images", "portfolio_images.portfolio_id", "=", "portfolios.id")
                                 ->join("portfolio_categories", "portfolio_categories.id", "=", "portfolios.category_id")    
-                                ->groupBy("portfolios.id")->get();
+                                ->groupBy("portfolios.id")
+                                ->get()->toArray();
+        if ($page > count($portfolios) || $page < 1) {
+            $page = 1;
+        }
+        $offset = ($page * $limit) - $limit;
+        $products_slice = array_slice($portfolios, $offset, $limit);
+        $datas = new Paginator($products_slice, count($portfolios), $limit, $page,  [
+            'path'  => $request->url(),
+            'query' => $request->query(),
+        ]);
+        $datas->setPath('/pylonportfolio');
         $portfoliocategories = PortfolioCategories::all();
-        return view('landingcontent.allportfolio')->with('data', ["portfolios" => $portfolios, "tags" => $tags, "categories" => $categories, "recent" => $recent, "portfoliocategories" => $portfoliocategories]);
+        return view('landingcontent.allportfolio')->with('data', ["portfolios" => $datas, "tags" => $tags, "categories" => $categories, "recent" => $recent, "portfoliocategories" => $portfoliocategories]);
     }
     public function ShowAllUserBlogs($id){
         $tags = Tags::all();

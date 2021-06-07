@@ -72,14 +72,15 @@ class TimeTrackClientController extends Controller
                             ->where([
                                     ["room_sessions.user_id", "=", $request->user_id],
                                     ["room_sessions.room_id", "=", $request->room_id],
-                                    ["room_sessions.session_status", "=", "offline"]
+                                    // ["room_sessions.session_status", "=", "offline"]
                                 ])
                             ->groupBy("room_sessions.id")
-                            ->get()
+                            ->get(["screenshots.*", "room_sessions.*", "room_sessions.updated_at as end"])
                             ->toArray();
+        // dd($sessions);
         foreach($sessions as $index => $session){
             $sessions[$index]["time_start"] = Carbon::parse($session["session_time"])->setTimezone('Asia/Singapore')->format("g:i A");
-            $sessions[$index]["time_end"] = Carbon::parse($session["updated_at"])->setTimezone('Asia/Singapore')->format("g:i A");
+            $sessions[$index]["time_end"] = Carbon::parse($session["end"])->setTimezone('Asia/Singapore')->format("g:i A");
             $startTime = Carbon::parse($session["session_time"]);
             $finishTime = Carbon::parse($session["updated_at"]);
             $sessions[$index]["duration"] = $finishTime->diffForHumans($startTime, true);
@@ -97,7 +98,6 @@ class TimeTrackClientController extends Controller
                                     ->get()
                                     ->toArray();
         $zip = new ZipArchive();
-        sleep(5);
         $filename = $userdetails[0]["f_name"] . "-" . $userdetails[0]["l_name"] . "-" . $id . ".zip";
         if ($zip->open($filename, ZipArchive::CREATE) !== TRUE) {
             echo("cannot open $filename");
@@ -116,13 +116,13 @@ class TimeTrackClientController extends Controller
                 }
                 $counter++;
             }
-            echo count($data) . "---" . $counter;
             $this->Download($filename, $counter);
         }
 
     }
 
     private function Download($filename, $counter){
+        sleep(3);
         header("Content-type: application/zip"); 
         header("Content-Disposition: attachment; filename=$filename");
         header("Content-length: " . filesize($filename));

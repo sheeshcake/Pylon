@@ -271,7 +271,7 @@
                         console.log(d);
                     }
                 });
-            }, 1000);
+            }, 900000);
             setInterval(() => {
                 canvas.width = video.videoWidth;
                 canvas.height = video.videoHeight;

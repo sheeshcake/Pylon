@@ -85,8 +85,8 @@ class BlogsController extends Controller
         return redirect('/blogs/viewblog/' . $request->blog_id)->with('success', 'Blog Updated!');
     }
     public function RemoveBlog(Request $request){
-        $blogs = Blogs::where("id", "=", $request->id)->get();
-        unlink('assets/img/blog/' . $blogs->image_name);
+        $blogs = Blogs::where("id", "=", $request->id)->get()->toArray();
+        unlink('assets/img/blog/' . $blogs[0]['blog_image']);
         Blogs::find($request->id)->delete();
         BlogTag::where("blog_id", "=", $request->id)->delete();
         return redirect('/blogs')->with('success', 'Blog Deleted!');
